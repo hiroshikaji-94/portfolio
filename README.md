@@ -81,4 +81,4 @@ Welcome to my web portfolio! I designed and developed this portfolio to showcase
 
 ## Questions and Feedback:
 
-Feel free to contact Hiroshi Kaji at hiroshi.kaji@willowtech.me with any questions or feedback.
+Feel free to contact Hiroshi Kaji at hiroshi.kaji@miraitech.me with any questions or feedback.

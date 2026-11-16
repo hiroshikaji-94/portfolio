@@ -41,7 +41,7 @@ const Sidebar = () => {
             whileHover='visible'
             animate='hidden'
             variants={socialIconVariants}
-            href='mailto:hiroshi.kaji@willowtech.me'
+            href='mailto:hiroshi.kaji@miraitech.me'
             aria-label='Email'
             target='_blank'
             rel='noreferrer noopener'
