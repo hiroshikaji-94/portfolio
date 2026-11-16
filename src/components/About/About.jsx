@@ -48,10 +48,10 @@ const About = () => {
             </StyledLandscapeContainer>
             <StyledPortraitContainer>
               <picture>
-                <source type='image/webp' srcSet='/rasters/eito.webp' />
+                <source type='image/png' srcSet='/rasters/hiroshi.png' />
                 <img
-                  src='/rasters/eito.webp'
-                  alt='Portrait of Eito Shinokura'
+                  src='/rasters/hiroshi.png'
+                  alt='Portrait of Hiroshi Kaji'
                 />
               </picture>
             </StyledPortraitContainer>

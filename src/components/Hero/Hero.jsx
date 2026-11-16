@@ -71,7 +71,7 @@ const Hero = () => {
                     whileTap={
                       shouldReduceMotion ? { scale: 1 } : { scale: 0.97 }
                     }
-                    href='/Resume_Eito_Shinokura.pdf'
+                    href='/Resume_Hiroshi_Kaji.pdf'
                     target='_blank'
                     rel='noopener noreferrer'
                   >

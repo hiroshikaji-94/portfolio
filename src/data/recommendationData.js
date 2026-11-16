@@ -20,7 +20,7 @@ export const recommendationData = [
     logoBg: '#ffffff',
     quoteLang: 'en',
     quote:
-      'Eito is the rare engineer who is equally strong in research and in production. He took our multi-agent automation platform from a fragile prototype to a system handling millions of requests a day, and he did it while making the architecture simpler rather than more complex. He is also the person everyone on the team wanted reviewing their designs.',
+      'Hiroshi is the rare engineer who is equally strong in research and in production. He took our multi-agent automation platform from a fragile prototype to a system handling millions of requests a day, and he did it while making the architecture simpler rather than more complex. He is also the person everyone on the team wanted reviewing their designs.',
   },
   {
     id: 'rec-citadel-ai-song',
@@ -36,7 +36,7 @@ export const recommendationData = [
     logoBg: '#22282e',
     quoteLang: 'ja',
     quote:
-      'エイトさんは、製造ラインの外観検査システムを検出精度96%で実運用まで導いてくれました。モデルが実世界のどこで失敗するかを見抜く力があり、精度だけでなく運用に耐える設計を最初から考えられる稀有なエンジニアです。Docker・KubernetesによるCI/CDの整備でデプロイ時間を70%短縮し、チーム全体の開発速度を大きく引き上げてくれました。',
+      'ヒロシさんは、製造ラインの外観検査システムを検出精度96%で実運用まで導いてくれました。モデルが実世界のどこで失敗するかを見抜く力があり、精度だけでなく運用に耐える設計を最初から考えられる稀有なエンジニアです。Docker・KubernetesによるCI/CDの整備でデプロイ時間を70%短縮し、チーム全体の開発速度を大きく引き上げてくれました。',
   },
   {
     id: 'rec-tenchijin-nishiyama',
@@ -51,7 +51,7 @@ export const recommendationData = [
     logoBg: '#ffffff',
     quoteLang: 'ja',
     quote:
-      'エイトさんの強みは、技術をビジネスの成果に翻訳できることです。彼が構築したレコメンドエンジンはコンバージョンを28%向上させ、事業側の議論でもトレードオフを明確に説明してくれました。経営層にもエンジニアにも同じ精度で伝えられる方は、本当に貴重だと感じています。',
+      'ヒロシさんの強みは、技術をビジネスの成果に翻訳できることです。彼が構築したレコメンドエンジンはコンバージョンを28%向上させ、事業側の議論でもトレードオフを明確に説明してくれました。経営層にもエンジニアにも同じ精度で伝えられる方は、本当に貴重だと感じています。',
   },
   {
     id: 'rec-tenchijin-sakuraba',
@@ -66,6 +66,6 @@ export const recommendationData = [
     logoBg: '#ffffff',
     quoteLang: 'ja',
     quote:
-      'エイトさんには、月間50万件以上の文書を処理する文書理解システムを抽出精度94%で構築していただきました。4言語対応の多言語NLPパイプラインの設計から、MLOpsの整備による本番投入までの時間の60%短縮まで、一貫して任せられる方です。若手エンジニアの育成にも尽力し、チームは以前よりはるかに力をつけました。',
+      'ヒロシさんには、月間50万件以上の文書を処理する文書理解システムを抽出精度94%で構築していただきました。4言語対応の多言語NLPパイプラインの設計から、MLOpsの整備による本番投入までの時間の60%短縮まで、一貫して任せられる方です。若手エンジニアの育成にも尽力し、チームは以前よりはるかに力をつけました。',
   },
 ];
