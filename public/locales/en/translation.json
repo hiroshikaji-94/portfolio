@@ -59,11 +59,11 @@
         "label": "Years Experience"
       },
       {
-        "value": "6+",
+        "value": "40+",
         "label": "AI Projects"
       },
       {
-        "value": "Top 3%",
+        "value": "Top 2%",
         "label": "Upwork Talent"
       }
     ],
@@ -100,17 +100,17 @@
       {
         "period": "2025 – Present",
         "title": "Senior Software Engineer",
-        "detail": "Duraflame, Inc. — multi-agent LLM assistants and retail intelligence"
+        "detail": "Apton Systems, Inc. — multi-agent LLM assistants and business intelligence"
       },
       {
-        "period": "2021 – 2024",
+        "period": "2022 – 2025",
         "title": "Senior Software Engineer",
-        "detail": "Chemican Inc. — multilingual document AI and regulatory data pipelines"
+        "detail": "RegSoft Inc. — multilingual document AI and regulatory data pipelines"
       },
       {
         "period": "2016 – 2021",
         "title": "Software Developer II",
-        "detail": "Grab — Go and Node.js microservices for transaction processing"
+        "detail": "PayNex Pte. Ltd. — Go and Node.js microservices for transaction processing"
       },
       {
         "period": "2012 – 2016",
@@ -252,17 +252,17 @@
     {
       "id": 1,
       "role": "Senior Software Engineer",
-      "summary": "Building multi-agent LLM assistants and retail intelligence for enterprise teams.",
+      "summary": "Building multi-agent LLM assistants and business intelligence for enterprise teams.",
       "metrics": [
         "Less manual coordination",
-        "Reviews analyzed daily",
+        "Feedback records analyzed daily",
         "Sentiment model accuracy"
       ],
       "highlights": [
         "Designed a modular, multi-agent Project Management Assistant with GPT-4o, Azure AI Search, LangGraph, and RAG.",
         "Built custom Model Context Protocol (MCP) servers that standardize how agents share information across workflows.",
         "Automated meeting summaries, task extraction, and Jira/Slack updates, cutting manual coordination by 40%.",
-        "Shipped a fine-tuned BERT retail-intelligence engine with Airflow retraining and a Redis cache, contributing to a 15% lift in customer satisfaction."
+        "Shipped a fine-tuned BERT business-intelligence engine with Airflow retraining and a Redis cache, contributing to a 15% increase in client retention."
       ]
     },
     {
@@ -524,7 +524,7 @@
     "cta-text": "I'm always happy to talk about AI products, data platforms, and backend systems. Whether you need an engineer for a new build or help scaling an existing system, let's talk.",
     "send-email": "Send Email"
   },
-  "footer-address": "Edogawa 2-32-31, Edogawa, Tokyo 132-0013",
+  "footer-address": "4-18-7 Chuo, Edogawa-ku, Tokyo, Japan",
   "footer": {
     "name": "Hiroshi Kaji",
     "tagline": "Senior Software Engineer · Tokyo",
