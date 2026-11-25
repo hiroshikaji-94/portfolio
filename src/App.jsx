@@ -16,6 +16,7 @@ import Footer from './components/Footer/Footer';
 import { useGlobalContext } from './Context/Context';
 import { useHashRoute, matchPostSlug } from './hooks/useHashRoute';
 import { postData } from './data/postData';
+import { CONSTANTS } from './constants';
 
 function App() {
   const { theme } = useGlobalContext();
@@ -25,7 +26,7 @@ function App() {
   };
 
   const route = useHashRoute();
-  const slug = matchPostSlug(route);
+  const slug = CONSTANTS.SHOW_POSTS ? matchPostSlug(route) : null;
   const articleIndex = slug
     ? postData.findIndex(post => post.slug === slug)
     : -1;
@@ -59,7 +60,7 @@ function App() {
           <Skills />
           <Projects />
           <Experience />
-          <Posts />
+          {CONSTANTS.SHOW_POSTS && <Posts />}
           <Recommendations />
           <Contact />
         </main>

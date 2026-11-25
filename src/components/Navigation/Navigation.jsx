@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { FaGlobe, FaMoon, FaSun } from 'react-icons/fa6';
 import { useGlobalContext } from '../../Context/Context';
 import { useActiveSection } from '../../hooks/useActiveSection';
+import { CONSTANTS } from '../../constants';
 import {
   StyledNavbar,
   StyledNavInner,
@@ -24,7 +25,9 @@ const Navigation = ({ onArticle }) => {
   const lang = i18n.resolvedLanguage;
 
   const links = t('navigation', { returnObjects: true });
-  const navLinks = Array.isArray(links) ? links : [];
+  const navLinks = (Array.isArray(links) ? links : []).filter(
+    link => CONSTANTS.SHOW_POSTS || link.href !== '#posts'
+  );
   const sectionIds = navLinks.map(link => link.href.replace('#', ''));
   const activeId = useActiveSection(sectionIds, !onArticle);
 

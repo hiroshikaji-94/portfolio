@@ -17,6 +17,7 @@ import {
 } from '../../styles/Contact/StyledContact';
 import { contactData } from '../../data/contactData';
 import { fadeUp, revealProps } from '../../utils/animations';
+import { CONSTANTS } from '../../constants';
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -48,8 +49,13 @@ const Contact = () => {
     },
   ];
 
+  // Keeps section backgrounds alternating whether or not Posts is shown.
   return (
-    <Section id='contact' $alt aria-labelledby='contact-title'>
+    <Section
+      id='contact'
+      $alt={CONSTANTS.SHOW_POSTS}
+      aria-labelledby='contact-title'
+    >
       <Container>
         <SectionHeader
           id='contact-title'
