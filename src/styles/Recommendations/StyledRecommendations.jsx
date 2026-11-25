@@ -28,9 +28,7 @@ export const StyledRecommendationCard = styled(motion.li)`
 
 export const StyledRecommendationTop = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-end;
   margin-bottom: 1.5rem;
 
   > svg {
@@ -38,39 +36,6 @@ export const StyledRecommendationTop = styled.div`
     height: 2rem;
     color: var(--primary);
     opacity: 0.25;
-  }
-`;
-
-export const StyledCompanyBadge = styled.a`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  height: 2.5rem;
-  padding: ${({ $logoBg }) => ($logoBg ? '0.45rem 0.85rem' : '0 0.85rem')};
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  background-color: ${({ $logoBg }) => $logoBg || 'var(--tag-bg)'};
-  color: var(--text);
-  font-size: 0.875rem;
-  font-weight: 600;
-  transition: border-color 0.2s ease, translate 0.2s ease;
-
-  img {
-    height: 100%;
-    width: auto;
-    max-width: 9rem;
-    object-fit: contain;
-  }
-
-  svg {
-    width: 0.75rem;
-    height: 0.75rem;
-  }
-
-  &:hover {
-    border-color: var(--primary);
-    color: var(--text);
-    translate: 0 -2px;
   }
 `;
 

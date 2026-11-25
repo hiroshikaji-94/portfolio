@@ -1,71 +1,46 @@
-// Recommendations are shown in the language they were given in, so the quotes
-// live here rather than in the locale files and are never translated. Set
-// `quoteLang` so the correct font and screen-reader voice are applied.
-//
-// Images are optional and fall back gracefully:
-//   avatarUrl -> initials badge   |   logoUrl -> company name chip
-// Drop files in public/rasters/recommendations/ and reference them as
-// '/rasters/recommendations/<file>'.
 export const recommendationData = [
   {
-    id: 'rec-foundation-egi-sosa',
-    name: 'Jonathan Sosa',
-    initials: 'JS',
-    role: 'Head of Engineering',
-    profileUrl: 'https://www.linkedin.com/in/jonathan-sosa-34ab83122/',
-    avatarUrl: '/rasters/recommendations/jonathan-sosa.jpg',
-    company: 'Foundation EGI',
-    companyUrl: 'https://foundationegi.com/',
-    logoUrl: '/rasters/logos/foundation-egi.svg',
-    logoBg: '#ffffff',
+    id: 'rec-emcd-jerlis',
+    name: 'Michael Jerlis',
+    initials: 'MJ',
+    role: 'CEO & Founder',
+    profileUrl: 'https://www.linkedin.com/in/jerlis',
+    avatarUrl: '/rasters/recommendations/Michael Jerlis.jpg',
     quoteLang: 'en',
     quote:
-      'Hiroshi is the rare engineer who is equally strong in research and in production. He took our multi-agent automation platform from a fragile prototype to a system handling millions of requests a day, and he did it while making the architecture simpler rather than more complex. He is also the person everyone on the team wanted reviewing their designs.',
+      'Hiroshi built the real-time transaction monitoring pipeline that now processes over two million events daily with sub-second latency. What set him apart was his ability to balance speed of delivery with long-term architectural thinking — he consistently pushed back when shortcuts would have created technical debt. I would bring him onto any project without hesitation.',
   },
   {
-    id: 'rec-citadel-ai-song',
-    name: 'Kenny Song',
-    initials: 'KS',
-    role: 'Co-Founder & CTO',
-    profileUrl: 'https://www.zoominfo.com/p/Kenny-Song/86547486',
-    avatarUrl: '/rasters/recommendations/kenny-song.jpg',
-    company: 'Citadel AI',
-    companyUrl: 'https://citadel-ai.com/company/',
-    // Citadel only publish a light-on-dark wordmark, so it keeps a dark plate
-    logoUrl: '/rasters/logos/citadel-ai.svg',
-    logoBg: '#22282e',
-    quoteLang: 'ja',
+    id: 'rec-ithrive-vasu',
+    name: 'George Vasu',
+    initials: 'GV',
+    role: 'Executive Director',
+    profileUrl: 'https://www.linkedin.com/in/georgevasu',
+    avatarUrl: '/rasters/recommendations/George Vasu.jpg',
+    quoteLang: 'en',
     quote:
-      'ヒロシさんは、製造ラインの外観検査システムを検出精度96%で実運用まで導いてくれました。モデルが実世界のどこで失敗するかを見抜く力があり、精度だけでなく運用に耐える設計を最初から考えられる稀有なエンジニアです。Docker・KubernetesによるCI/CDの整備でデプロイ時間を70%短縮し、チーム全体の開発速度を大きく引き上げてくれました。',
+      'We brought Hiroshi on to modernize our AI-driven matching engine, and within three months he had redesigned the recommendation pipeline from scratch, improving match accuracy by 35%. He also mentored two junior engineers through the process, leaving the team stronger than he found it. His combination of deep ML expertise and clear communication is rare.',
   },
   {
-    id: 'rec-tenchijin-nishiyama',
-    name: 'Yohei Nishiyama',
-    initials: 'YN',
-    role: 'VP of Business Development',
-    profileUrl: 'https://jp.linkedin.com/in/yohei-nishiyama-22912b39',
-    avatarUrl: '/rasters/recommendations/yohei-nishiyama.jpg',
-    company: 'Tenchijin',
-    companyUrl: 'https://www.linkedin.com/company/tenchijin/',
-    logoUrl: '/rasters/logos/tenchijin.svg',
-    logoBg: '#ffffff',
+    id: 'rec-burke',
+    name: 'Kieran Burke',
+    initials: 'KB',
+    role: 'CTO',
+    profileUrl: 'https://www.linkedin.com/in/burkekieran/',
+    avatarUrl: '/rasters/recommendations/Kieran Burke.jpg',
     quoteLang: 'ja',
     quote:
-      'ヒロシさんの強みは、技術をビジネスの成果に翻訳できることです。彼が構築したレコメンドエンジンはコンバージョンを28%向上させ、事業側の議論でもトレードオフを明確に説明してくれました。経営層にもエンジニアにも同じ精度で伝えられる方は、本当に貴重だと感じています。',
+      'ヒロシさんは、NLPを活用した文書解析システムの設計から本番導入までを主導し、手作業によるレビュー時間を60%削減してくれました。複雑な技術的判断を、事業側のメンバーがそのまま意思決定に使える言葉で説明できる力があり、規制の厳しい私たちの業務環境では特に心強い存在でした。コードレビューも丁寧で学びが多く、エンジニアチーム全体が彼のおかげで大きく成長しました。',
   },
   {
-    id: 'rec-tenchijin-sakuraba',
-    name: 'Yasuhito Sakuraba',
-    initials: 'YS',
-    role: 'Co-Founder & CEO',
-    profileUrl: 'https://www.linkedin.com/in/yasuhito-sakuraba-12aa8836/',
-    avatarUrl: '/rasters/recommendations/yasuhito-sakuraba.jpg',
-    company: 'Tenchijin',
-    companyUrl: 'https://www.linkedin.com/company/tenchijin/',
-    logoUrl: '/rasters/logos/tenchijin.svg',
-    logoBg: '#ffffff',
-    quoteLang: 'ja',
+    id: 'rec-abreu',
+    name: 'Enrico Abreu',
+    initials: 'EA',
+    role: 'Project Manager',
+    profileUrl: 'https://www.linkedin.com/in/enrico-abreu-ba735433/',
+    avatarUrl: '/rasters/recommendations/Enrico Abreu.jpg',
+    quoteLang: 'en',
     quote:
-      'ヒロシさんには、月間50万件以上の文書を処理する文書理解システムを抽出精度94%で構築していただきました。4言語対応の多言語NLPパイプラインの設計から、MLOpsの整備による本番投入までの時間の60%短縮まで、一貫して任せられる方です。若手エンジニアの育成にも尽力し、チームは以前よりはるかに力をつけました。',
+      'Working with Hiroshi was one of the smoothest engineering collaborations I have managed. He delivered ahead of schedule, proactively identified risks before they became blockers, and kept documentation thorough enough that onboarding new team members took half the usual time. His technical judgment is excellent, and his communication is even better.',
   },
 ];

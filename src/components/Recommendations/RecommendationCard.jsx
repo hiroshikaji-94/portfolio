@@ -4,11 +4,9 @@ import {
   FaLinkedin,
   FaQuoteLeft,
 } from 'react-icons/fa6';
-import ZoomInfoSVG from '/src/assets/icons/zoominfo.svg';
 import {
   StyledRecommendationCard,
   StyledRecommendationTop,
-  StyledCompanyBadge,
   StyledRecommendationQuote,
   StyledRecommendationAuthor,
   StyledRecommendationAvatar,
@@ -17,11 +15,8 @@ import {
 } from '../../styles/Recommendations/StyledRecommendations';
 import { fadeUp } from '../../utils/animations';
 
-// The profile icon follows whichever network the link points at, so adding a
-// recommendation only ever means setting `profileUrl`.
 const PROFILE_NETWORKS = [
   { host: 'linkedin.com', label: 'LinkedIn', Icon: FaLinkedin },
-  { host: 'zoominfo.com', label: 'ZoomInfo', Icon: ZoomInfoSVG },
 ];
 
 const resolveNetwork = url => {
@@ -31,40 +26,13 @@ const resolveNetwork = url => {
 
 const RecommendationCard = ({ recommendation }) => {
   const { t } = useTranslation();
-  const {
-    name,
-    initials,
-    role,
-    profileUrl,
-    avatarUrl,
-    company,
-    companyUrl,
-    logoUrl,
-    logoBg,
-    quote,
-    quoteLang,
-  } = recommendation;
+  const { name, initials, role, profileUrl, avatarUrl, quote, quoteLang } =
+    recommendation;
   const { label, Icon } = resolveNetwork(profileUrl);
 
   return (
     <StyledRecommendationCard variants={fadeUp}>
       <StyledRecommendationTop>
-        <StyledCompanyBadge
-          href={companyUrl}
-          target='_blank'
-          rel='noreferrer noopener'
-          aria-label={`${company} website`}
-          $logoBg={logoUrl ? logoBg : undefined}
-        >
-          {logoUrl ? (
-            <img src={logoUrl} alt={company} />
-          ) : (
-            <>
-              {company}
-              <FaArrowUpRightFromSquare aria-hidden='true' />
-            </>
-          )}
-        </StyledCompanyBadge>
         <FaQuoteLeft aria-hidden='true' />
       </StyledRecommendationTop>
       <StyledRecommendationQuote lang={quoteLang} cite={profileUrl}>
@@ -76,7 +44,6 @@ const RecommendationCard = ({ recommendation }) => {
         </StyledRecommendationAvatar>
         <StyledRecommendationCredentials>
           <h4>{name}</h4>
-          {/* company is already named in the badge above, so it is not repeated */}
           <span>{role}</span>
         </StyledRecommendationCredentials>
         <StyledProfileLink
