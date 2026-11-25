@@ -1,95 +1,305 @@
 {
   "app-title": "Home | Hiroshi Kaji • Portfolio",
   "loading": "Loading...",
-  "greetings": "Hi there, I'm ",
-  "name": "Hiroshi",
-  "name-end": ".",
-  "sub-heading": "Senior Software Engineer based in Tokyo.",
-  "more-info": "I build scalable AI systems, microservices, and cloud-native applications — from LLM-powered solutions and multi-agent architectures to data pipelines and enterprise-grade platforms. With 8+ years of experience, I turn complex requirements into reliable systems that drive measurable business impact.",
-  "resume-btn": "resume",
-  "about-heading": "about me",
+  "navigation": [
+    {
+      "menuTitle": "Home",
+      "href": "#home"
+    },
+    {
+      "menuTitle": "About",
+      "href": "#about"
+    },
+    {
+      "menuTitle": "Skills",
+      "href": "#technology"
+    },
+    {
+      "menuTitle": "Projects",
+      "href": "#projects"
+    },
+    {
+      "menuTitle": "Experience",
+      "href": "#experience"
+    },
+    {
+      "menuTitle": "Posts",
+      "href": "#posts"
+    },
+    {
+      "menuTitle": "Recommendations",
+      "href": "#recommendations"
+    },
+    {
+      "menuTitle": "Contact",
+      "href": "#contact"
+    }
+  ],
+  "nav": {
+    "label": "Main",
+    "home-label": "Hiroshi Kaji, back to top",
+    "language-label": "Switch language to Japanese",
+    "theme-to-dark": "Switch to dark theme",
+    "theme-to-light": "Switch to light theme",
+    "menu-label": "Menu"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Hiroshi Kaji",
+    "roles": [
+      "Senior Software Engineer",
+      "AI Engineer",
+      "LLM & Agent Systems Builder",
+      "Cloud-Native Developer"
+    ],
+    "description": "Based in Tokyo, I build LLM-powered products, multi-agent systems, data pipelines, and cloud-native platforms, turning complex requirements into reliable systems with measurable business impact.",
+    "stats": [
+      {
+        "value": "8+",
+        "label": "Years Experience"
+      },
+      {
+        "value": "6+",
+        "label": "AI Projects"
+      },
+      {
+        "value": "Top 3%",
+        "label": "Upwork Talent"
+      }
+    ],
+    "cta-work": "View My Work",
+    "cta-contact": "Get In Touch",
+    "scroll-label": "Scroll to About"
+  },
+  "about-heading": "About Me",
   "about-text-top": "Hi! I'm Hiroshi, a Senior Software Engineer with over eight years of experience building scalable AI systems, microservices, and cloud-native applications. I specialize in LLM-powered solutions, data pipelines, and enterprise-grade architectures, and I've worked across the stack — from multi-agent LLM platforms to high-throughput backend services.",
   "about-text-bottom": "I've delivered production-grade systems that optimize workflows and create measurable business value, with deep expertise in Python, Go, and Node.js alongside modern cloud platforms like Azure and Google Cloud. I'm driven by turning complex requirements into elegant, dependable systems that teams can rely on.",
-  "technology-heading": "technology",
-  "projects-heading": "projects",
-  "experience-heading": "experience",
-  "posts-heading": "posts",
-  "recommendations-heading": "recommendations",
-  "read-post": "read post",
-  "reading-time": "{{minutes}} min read",
-  "featured-tag": "project",
+  "about": {
+    "subtitle": "Turning complex requirements into dependable systems",
+    "strengths-title": "Key Strengths",
+    "strengths": [
+      {
+        "title": "LLM & Agent Systems",
+        "description": "Multi-agent assistants built with LangGraph, RAG, and custom MCP servers that automate real enterprise workflows."
+      },
+      {
+        "title": "Data Engineering",
+        "description": "Cloud-native ETL on BigQuery, dbt models with data-quality checks, and Airflow pipelines that keep models fresh."
+      },
+      {
+        "title": "Scalable Microservices",
+        "description": "Go and Node.js services over REST, gRPC, GraphQL, and Kafka, shipped through CI/CD on Kubernetes."
+      },
+      {
+        "title": "Production Reliability",
+        "description": "Monitoring, LLM fallbacks, and on-call ownership that kept critical document services at 99.9% uptime."
+      }
+    ],
+    "journey-title": "Professional Journey",
+    "journey": [
+      {
+        "period": "2025 – Present",
+        "title": "Senior Software Engineer",
+        "detail": "Duraflame, Inc. — multi-agent LLM assistants and retail intelligence"
+      },
+      {
+        "period": "2021 – 2024",
+        "title": "Senior Software Engineer",
+        "detail": "Chemican Inc. — multilingual document AI and regulatory data pipelines"
+      },
+      {
+        "period": "2016 – 2021",
+        "title": "Software Developer II",
+        "detail": "Grab — Go and Node.js microservices for transaction processing"
+      },
+      {
+        "period": "2012 – 2016",
+        "title": "Bachelor of Computer Science",
+        "detail": "National University of Singapore"
+      }
+    ],
+    "photo-alt": "Portrait of Hiroshi Kaji",
+    "profile-name": "Hiroshi Kaji",
+    "profile-role": "Senior Software Engineer · Tokyo",
+    "profile-stats": [
+      {
+        "value": "100%",
+        "label": "Upwork Job Success"
+      },
+      {
+        "value": "5.0",
+        "label": "Client Rating"
+      }
+    ],
+    "core-tech-title": "Core Technologies"
+  },
+  "technology-heading": "Technical Expertise",
+  "skills": {
+    "subtitle": "The tools I use to build AI products, data platforms, and backends",
+    "groups": {
+      "ai": {
+        "title": "AI & Machine Learning",
+        "items": {
+          "llm": "LLMs & Agents",
+          "rag": "RAG & Search",
+          "dl": "Deep Learning",
+          "mlops": "MLOps & Analytics"
+        }
+      },
+      "data": {
+        "title": "Data & Cloud",
+        "items": {
+          "pipelines": "Data Pipelines",
+          "databases": "Databases",
+          "cloud": "Cloud Platforms",
+          "containers": "Containers"
+        }
+      },
+      "software": {
+        "title": "Software Development",
+        "items": {
+          "backend": "Backend",
+          "frontend": "Frontend",
+          "apis": "APIs & Messaging",
+          "devops": "DevOps & CI/CD"
+        }
+      }
+    }
+  },
+  "projects-heading": "Featured Projects",
+  "projects-section": {
+    "subtitle": "AI products built for real users and real businesses",
+    "badge-live": "Live",
+    "badge-code": "Open Source",
+    "visit-site": "Visit Site",
+    "view-code": "View Code",
+    "more-badge": "More",
+    "additional-title": "Additional Projects",
+    "additional-subtitle": "Smaller AI apps and experiments.",
+    "browse-github": "Browse GitHub"
+  },
   "projects": [
     {
       "id": 1,
-      "description": "Luma is a platform that allows users to create and explore booked events. It provides a ticket purchasing system where users can buy and sell event tickets."
+      "description": "Writor is an AI marketing workspace for real estate agents. Add a property once and, within minutes, get the listing description, virtually staged photos, a listing video, social posts, and a listing page, without hiring a copywriter, stager, or video editor."
     },
     {
       "id": 2,
-      "description": "TalkHealth.ai transforms health engagement through AI-driven insights, offering accessible, precise, and personalized medical information."
+      "description": "Plan Chat is an AI drafting studio that turns a sketch, a photo of a plan, or a one-line brief into a layered, dimensioned CAD floor plan, drawn live in the browser. Edit it with CAD tools or by chat, view it in 3D, and export DXF, DWG, or PDF."
     },
     {
       "id": 3,
-      "description": "Smart Land Planner turns a PDF site survey into a professional site plan. It rasterizes the survey into a high-resolution image, hands it to Gemini for analysis, and returns a detailed plan in seconds instead of days."
+      "description": "SpeedLegal is an AI contract paralegal that reviews 25+ types of contracts in 5+ languages. It flags hidden risks and unfavorable terms, suggests fixes based on your own standards, summarizes key obligations and dates, and answers clause questions in plain language."
     },
     {
       "id": 4,
-      "description": "HelloHistory is an AI powered mobile app that lets you have life-like conversations with historical figures. Get a personal perspective on life, history, and the world from some of the most influential figures of all time."
+      "description": "FloorPlan AI generates editable floor plans from a text prompt, a list of requirements, or an uploaded sketch. Users furnish and refine layouts in a web editor, create AI renders and presentation boards, and export to DWG, DXF, or PNG."
     },
     {
       "id": 5,
-      "description": "Soccersm is an AI tool where you can request and get pre-match predictions with high accuracy and detailed analysis for all major leagues and competitions."
+      "description": "Perci is an AI listing platform for Amazon sellers. It creates, optimizes, and translates listings in bulk from real keyword and competitor data, fills in the backend attributes Alexa uses to recommend products, and publishes approved listings straight to Amazon."
     },
     {
       "id": 6,
-      "description": "A real-time computer-vision system that detects manufacturing defects with YOLOv8 and EfficientNet, optimized for edge deployment via ONNX and TensorRT."
+      "description": "Linnk AI translates PDFs, Word files, slide decks, and 50+ other formats into 154 languages while keeping tables, fonts, and layout intact. Vision models read scans and handwriting directly, and users can summarize, convert, or chat with any document."
     },
     {
       "id": 7,
-      "description": "An OCR-free document-understanding pipeline that extracts structured fields from invoices and contracts using LayoutLMv3, reaching 94%+ field-level accuracy at scale."
+      "description": "AI Topic Explainer turns any study topic into a short, simple explanation, with one-click examples such as machine learning, blockchain, and photosynthesis."
     },
     {
       "id": 8,
-      "description": "Fractal is an NFT marketplace which allows online gamers to purchase NFTs and compete with others. Each sprint it runs a game event for users and provides a prize for the winner."
+      "description": "MeetMind turns meeting recordings into searchable transcripts, summaries, and action items, using Whisper for transcription and LLaMA 3.1 on Groq for analysis."
     },
     {
       "id": 9,
-      "description": "Stromodoro is a simple website that helps users increase their productivity by using the Pomodoro Technique."
+      "description": "ThemeCraft generates a unique website theme from a plain-language description, using the visitor’s own OpenAI API key."
     },
     {
       "id": 10,
-      "description": "Ripplenote is a website that provides a simple and elegant platform for creating and sharing notes."
+      "description": "QuizLens turns uploaded videos into quizzes: it extracts the audio, generates questions, and tracks results with score reviews and a leaderboard."
     },
     {
       "id": 11,
-      "description": "A website project for people who are looking for information about movies and current trends."
+      "description": "WikiQuiz generates an AI-powered quiz from any Wikipedia article URL, suggests related topics, and keeps a history of past quizzes."
     },
     {
       "id": 12,
-      "description": "A task manager or todo application built with React. Users can add, delete, edit, and view their tasks."
+      "description": "FlashGenius turns pasted notes or uploaded PDF and DOCX files into flashcards, quizzes, and a study summary that can be downloaded as a PDF."
     },
     {
       "id": 13,
-      "description": "BloomyWeather is a project made with a weather API which shows you the current weather of your target location."
+      "description": "AI Quiz Generator builds interactive educational quizzes from a one-line description with OpenAI, stores them in Supabase, and falls back to a question bank when no API key is set."
     },
     {
       "id": 14,
-      "description": "Foodie is a vanilla JavaScript application that interacts with the Forkify API to fetch and display recipe food data."
+      "description": "Enter the ingredients you have and get three Gemini-generated recipes with per-serving macros, dish photos, dietary filters, favorites, and an automatic shopping list."
     }
   ],
+  "experience-heading": "Professional Experience",
+  "experience-section": {
+    "subtitle": "Eight years of shipping production systems",
+    "present": "Present",
+    "achievements": "Key Achievements",
+    "highlights": "Highlights",
+    "badges": {
+      "current": "Current Role",
+      "data": "Data & AI",
+      "backend": "Backend"
+    }
+  },
   "experience": [
     {
       "id": 1,
-      "description": "As a Senior Software Engineer at Duraflame, Inc., I designed and shipped a modular, multi-agent LLM-powered Project Management Assistant using GPT-4o, Azure AI Search, LangGraph, and RAG, with custom Model Context Protocol (MCP) servers to standardize agent collaboration. I automated meeting summarization, task extraction, and Jira/Slack updates — cutting manual coordination by 40% — and built a fine-tuned BERT sentiment and retail-intelligence engine that analyzes 50,000+ consumer reviews daily at 92% accuracy, contributing to a 15% increase in customer satisfaction. I automated ingestion and retraining pipelines with Docker and Apache Airflow and added a Redis caching layer to keep inference fast at retail scale."
+      "role": "Senior Software Engineer",
+      "summary": "Building multi-agent LLM assistants and retail intelligence for enterprise teams.",
+      "metrics": [
+        "Less manual coordination",
+        "Reviews analyzed daily",
+        "Sentiment model accuracy"
+      ],
+      "highlights": [
+        "Designed a modular, multi-agent Project Management Assistant with GPT-4o, Azure AI Search, LangGraph, and RAG.",
+        "Built custom Model Context Protocol (MCP) servers that standardize how agents share information across workflows.",
+        "Automated meeting summaries, task extraction, and Jira/Slack updates, cutting manual coordination by 40%.",
+        "Shipped a fine-tuned BERT retail-intelligence engine with Airflow retraining and a Redis cache, contributing to a 15% lift in customer satisfaction."
+      ]
     },
     {
       "id": 2,
-      "description": "As a Senior Software Engineer at Chemican Inc., I built multi-language support for Japanese, English, and Chinese Safety Data Sheets using Google Cloud Document AI and multiple LLMs (Claude, GPT-4, Gemini), with resilient fallback between models and 95% accuracy on document classification. I architected a parallel-processing crawler pipeline that integrates regulatory data (NITE CHRIP, TSCA) into a cloud-native ETL stack on Cloud Storage and BigQuery, stood up the initial dbt project with data-quality checks, and established a fully automated GitHub Actions CI/CD pipeline deploying crawlers as scheduled Cloud Run jobs — maintaining 99.9% uptime on 24/7 on-call."
+      "role": "Senior Software Engineer",
+      "summary": "Built multilingual document AI and regulatory data pipelines on Google Cloud.",
+      "metrics": [
+        "Document classification accuracy",
+        "Uptime on 24/7 on-call",
+        "SDS languages supported"
+      ],
+      "highlights": [
+        "Added Japanese, English, and Chinese Safety Data Sheet support with Document AI and Claude, GPT-4, and Gemini, with fallback between models.",
+        "Architected parallel crawlers that integrate regulatory databases (NITE CHRIP, TSCA) into a BigQuery ETL pipeline.",
+        "Set up the initial dbt project with dbt_expectations data-quality checks for the SDS data migration.",
+        "Automated CI/CD with GitHub Actions, deploying crawlers as scheduled Cloud Run jobs."
+      ]
     },
     {
       "id": 3,
-      "description": "As a Software Developer II at Grab, I developed RESTful APIs and microservices with Node.js, Express.js, MongoDB, and PostgreSQL, and built Go-based services for transaction processing — authentication, validation, and risk assessment — communicating over REST, gRPC, and Kafka. I migrated REST APIs to GraphQL on a Golang backend integrated with a React frontend, optimized gRPC load balancing in Kubernetes, and fixed memory leaks and timeouts that improved API resilience across five services. I delivered it all through CI/CD on Google Kubernetes Engine with Docker, GitHub Actions, and Jenkins."
+      "role": "Software Developer II",
+      "summary": "Built Go and Node.js microservices for transaction processing and healthcare applications.",
+      "metrics": [],
+      "highlights": [
+        "Developed RESTful APIs and microservices with Node.js, Express, MongoDB, and PostgreSQL.",
+        "Created Go services for authentication, validation, and risk assessment, communicating over REST and Kafka.",
+        "Migrated REST APIs to GraphQL on a Go backend and tuned gRPC load balancing in Kubernetes.",
+        "Fixed memory leaks and added context-based timeouts across five Go microservices, improving response times and resilience."
+      ]
     }
   ],
+  "posts-heading": "Latest Posts",
+  "posts-section": {
+    "subtitle": "Stories and lessons from my work"
+  },
+  "read-post": "Read Post",
+  "reading-time": "{{minutes}} min read",
   "posts": [
     {
       "id": 1,
@@ -297,43 +507,31 @@
       ]
     }
   ],
-  "back-to-posts": "back to posts",
-  "view-profile": "view profile",
-  "show-more-btn": "show more",
-  "show-less-btn": "show less",
-  "learn-more": "more info",
-  "navigation": [
-    {
-      "menuTitle": "home",
-      "href": "/#home"
-    },
-    {
-      "menuTitle": "about",
-      "href": "/#about"
-    },
-    {
-      "menuTitle": "technology",
-      "href": "/#technology"
-    },
-    {
-      "menuTitle": "projects",
-      "href": "/#projects"
-    },
-    {
-      "menuTitle": "experience",
-      "href": "/#experience"
-    },
-    {
-      "menuTitle": "posts",
-      "href": "/#posts"
-    },
-    {
-      "menuTitle": "recommendations",
-      "href": "/#recommendations"
-    }
-  ],
-  "footer-contact": "e-mail",
-  "footer-location": "location",
+  "back-to-posts": "Back to posts",
+  "show-more-btn": "Show More",
+  "show-less-btn": "Show Less",
+  "recommendations-heading": "Recommendations",
+  "recommendations-section": {
+    "subtitle": "What colleagues and clients say about working with me"
+  },
+  "view-profile": "View profile",
+  "contact": {
+    "title": "Let's Connect",
+    "subtitle": "Open to new projects and collaborations",
+    "email": "Email",
+    "location": "Location",
+    "cta-title": "Interested in working together?",
+    "cta-text": "I'm always happy to talk about AI products, data platforms, and backend systems. Whether you need an engineer for a new build or help scaling an existing system, let's talk.",
+    "send-email": "Send Email"
+  },
   "footer-address": "Edogawa 2-32-31, Edogawa, Tokyo 132-0013",
-  "footer-message": "Website by Hiroshi Kaji"
+  "footer": {
+    "name": "Hiroshi Kaji",
+    "tagline": "Senior Software Engineer · Tokyo",
+    "copyright": "© {{year}} Hiroshi Kaji. All rights reserved."
+  },
+  "common": {
+    "resume": "Download Resume",
+    "tech-stack": "Tech stack"
+  }
 }

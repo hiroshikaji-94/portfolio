@@ -2,18 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="src/assets/images/illustrations/japanese_apricot_blossom.svg"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hiroshi Kaji • Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0f172a" />
+    <!-- Page colour before React mounts, so dark-mode visitors see no white flash. -->
+    <style>
+      body {
+        margin: 0;
+        background-color: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #0f172a;
+        }
+      }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Zen+Kurenaido&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
       content="Hiroshi Kaji's portfolio. Hiroshi is a Senior Software Engineer based in Tokyo with 8+ years of experience building scalable AI systems, microservices, and cloud-native applications — from LLM-powered solutions and multi-agent architectures to data pipelines and enterprise-grade platforms that drive measurable business impact."

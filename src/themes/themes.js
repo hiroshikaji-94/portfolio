@@ -1,180 +1,76 @@
-// Base
+// Design tokens. Colours are exposed to every component as CSS custom
+// properties (see GlobalStyles), so switching theme only swaps variables.
 const bpSize = {
-  mobileS: '20.65em', //330px
-  mobileM: '25em', //400px
-  mobileL: '30em', //480px
-  tabletS: '37.5em', //600px
-  tabletL: '48em', //768px
-  desktopXS: '56.25em', //900px
-  desktopS: '67.5em', //1080px
-  desktopM: '75em', //1200px
-  desktopL: '87.5em', //1400px
+  mobile: '30em', // 480px
+  tablet: '48em', // 768px
+  laptop: '64em', // 1024px
 };
+
 export const base = {
   fonts: {
-    primary: 'Montserrat, system-ui, sans-serif',
-    secondary: 'GazeNozarashi, system-ui, cursive',
-    // 'Secondary' font for Japanese text
-    tertiary: 'Zen Kurenaido, sans-serif',
+    // Inter has no Japanese glyphs, so the browser falls through to Noto Sans
+    // JP for Japanese text and keeps Inter for Latin text in the same line.
+    sans: "'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    mono: "'JetBrains Mono', 'Fira Code', ui-monospace, monospace",
   },
   bp: {
-    mobileS: `only screen and (max-width: ${bpSize.mobileS})`,
-    mobileM: `only screen and (max-width: ${bpSize.mobileM})`,
-    mobileL: `only screen and (max-width: ${bpSize.mobileL})`,
-    tabletS: `only screen and (max-width: ${bpSize.tabletS})`,
-    tabletL: `only screen and (max-width: ${bpSize.tabletL})`,
-    desktopXS: `only screen and (max-width: ${bpSize.desktopXS})`,
-    desktopS: `only screen and (max-width: ${bpSize.desktopS})`,
-    desktopM: `only screen and (max-width: ${bpSize.desktopM})`,
-    desktopL: `only screen and (max-width: ${bpSize.desktopL})`,
+    mobile: `only screen and (max-width: ${bpSize.mobile})`,
+    tablet: `only screen and (max-width: ${bpSize.tablet})`,
+    laptop: `only screen and (max-width: ${bpSize.laptop})`,
   },
 };
 
-// Light Theme
-const lightPalette = {
-  primary: {
-    50: '#ffffff',
-    100: '#ecf6faed',
-    200: '#ecf6fa',
-    300: '#407ac3',
-    350: '#79a2d5',
-    400: '#2b548a',
-    500: '#244977',
-    600: '#1e3e67',
-  },
-  secondary: {},
-  tertiary: {
-    600: '#ce373c',
-  },
-  neutrals: {
-    100: '#eee',
-    200: '#fbf3e2',
-    300: '#f1f2daff',
-  },
-  gradients: {
-    hero: ['#fedccdcc', '#f5cce9cc', '#fedccdcc'],
-    heroSectionBackdrop: ['#fbf3e2', '#fbf3e2'],
-    footer: ['#fedccdcc', '#f5cce9cc'],
-  },
-};
-
-// Dark Theme
-const darkPalette = {
-  primary: {
-    50: '#283e51',
-    100: '#1e3e67',
-    200: '#244977',
-    300: '#bfccdc',
-    350: '#79a2d5',
-    400: '#407ac3',
-    500: '#ecf6fa',
-    600: '#ecf6faed',
-  },
-  secondary: {},
-  tertiary: { 600: '#ce373c' },
-  neutrals: { 100: '#121212', 200: '#cfd7e1', 300: '#222222ff' },
-  gradients: {
-    hero: ['#283e51', '#0a2342', '#cfd7e1'],
-    heroSectionBackdrop: ['#dee4eb', '#cfd7e1'],
-    footer: ['#2b548acc', '#deb9d4'],
-  },
-};
-
-export const darkTheme = {
-  primary: {
-    h1: darkPalette.primary[600],
-    p: darkPalette.primary[600],
-    span: darkPalette.primary[600],
-    li: darkPalette.primary[600],
-    link: darkPalette.primary[600],
-    navigationBars: darkPalette.primary[600],
-    scrollbarThumb: darkPalette.primary[600],
-    footerContentBg: darkPalette.primary[200],
-    h2: darkPalette.primary[350],
-    navLinkHover: darkPalette.primary[400],
-    h3: darkPalette.primary[300],
-    h4: darkPalette.primary[300],
-    skillLiText: darkPalette.primary[300],
-    scrollbarThumbHover: darkPalette.primary[300],
-    scrollbarTrack: darkPalette.primary[300],
-    linkHover: darkPalette.primary[350],
-    skillLiBg: darkPalette.primary[200],
-    projectDescBg: darkPalette.primary[200],
-    body: darkPalette.primary[50],
-    main: darkPalette.primary[50],
-  },
-  tertiary: {
-    textSelection: darkPalette.tertiary[600],
-    focusOutline: darkPalette.tertiary[600],
-    sunShadow: darkPalette.tertiary[600],
-    linkBorder: darkPalette.tertiary[600],
-    sidebarBorder: darkPalette.tertiary[600],
-    projectBorder: darkPalette.tertiary[600],
-    navigationBorder: darkPalette.tertiary[600],
-  },
-  neutrals: {
-    footerText: darkPalette.neutrals[200],
-    aboutBackdrop: darkPalette.neutrals[200],
-    imageBorder: darkPalette.neutrals[200],
-    textSelectionColor: darkPalette.neutrals[100],
-  },
-  gradients: {
-    heroBgBottom: darkPalette.gradients.hero[0],
-    heroBgTop: darkPalette.gradients.hero[1],
-    heroBgBtmRtCorner: darkPalette.gradients.hero[2],
-    heroSectionBackdropLeft: darkPalette.gradients.heroSectionBackdrop[0],
-    heroSectionBackdropRight: darkPalette.gradients.heroSectionBackdrop[1],
-    footerBgBottom: darkPalette.gradients.footer[1],
-    footerBgTop: darkPalette.gradients.footer[0],
-  },
+const shared = {
+  primary: '#6366f1',
+  primaryDark: '#4f46e5',
+  accent: '#f59e0b',
+  success: '#10b981',
+  violet: '#8b5cf6',
+  // The navbar, footer and code window stay dark in both themes.
+  navBg: 'rgba(15, 23, 42, 0.9)',
+  footerBg: '#0f172a',
+  codeBg: '#0f172a',
+  shadow:
+    '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+  shadowHover:
+    '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
 };
 
 export const lightTheme = {
-  primary: {
-    h1: lightPalette.primary[600],
-    p: lightPalette.primary[600],
-    span: lightPalette.primary[600],
-    li: lightPalette.primary[600],
-    link: lightPalette.primary[600],
-    navigationBars: lightPalette.primary[600],
-    scrollbarThumb: lightPalette.primary[600],
-    footerContentBg: lightPalette.primary[400],
-    h2: lightPalette.primary[400],
-    navLinkHover: lightPalette.primary[350],
-    h3: lightPalette.primary[300],
-    h4: lightPalette.primary[300],
-    skillLiText: lightPalette.primary[300],
-    scrollbarThumbHover: lightPalette.primary[300],
-    scrollbarTrack: lightPalette.primary[300],
-    linkHover: lightPalette.primary[300],
-    skillLiBg: lightPalette.primary[200],
-    projectDescBg: lightPalette.primary[200],
-    body: lightPalette.primary[50],
-    main: lightPalette.primary[50],
-  },
-  tertiary: {
-    textSelection: lightPalette.tertiary[600],
-    focusOutline: lightPalette.tertiary[600],
-    sunShadow: lightPalette.tertiary[600],
-    linkBorder: lightPalette.tertiary[600],
-    sidebarBorder: lightPalette.tertiary[600],
-    projectBorder: lightPalette.tertiary[600],
-    navigationBorder: lightPalette.tertiary[600],
-  },
-  neutrals: {
-    footerText: lightPalette.neutrals[300],
+  ...shared,
+  name: 'light',
+  bg: '#ffffff',
+  bgAlt: '#f8fafc',
+  // Cards sit on either background; both are white in light mode.
+  surface: '#ffffff',
+  surfaceOnAlt: '#ffffff',
+  surfaceMuted: '#f8fafc',
+  text: '#0f172a',
+  textBody: '#334155',
+  textSecondary: '#64748b',
+  textMuted: '#94a3b8',
+  border: '#e2e8f0',
+  cardBorder: 'transparent',
+  tagBg: '#f8fafc',
+};
 
-    aboutBackdrop: lightPalette.neutrals[200],
-    imageBorder: lightPalette.neutrals[200],
-    textSelectionColor: lightPalette.neutrals[100],
-  },
-  gradients: {
-    heroBgBottom: lightPalette.gradients.hero[0],
-    heroBgTop: lightPalette.gradients.hero[1],
-    heroBgBtmRtCorner: lightPalette.gradients.hero[2],
-    heroSectionBackdropLeft: lightPalette.gradients.heroSectionBackdrop[0],
-    heroSectionBackdropRight: lightPalette.gradients.heroSectionBackdrop[1],
-    footerBgBottom: lightPalette.gradients.footer[0],
-    footerBgTop: lightPalette.gradients.footer[0],
-  },
+export const darkTheme = {
+  ...shared,
+  name: 'dark',
+  bg: '#0f172a',
+  bgAlt: '#1e293b',
+  surface: '#1e293b',
+  surfaceOnAlt: '#0f172a',
+  surfaceMuted: '#0f172a',
+  text: '#f1f5f9',
+  textBody: '#d5dde8',
+  textSecondary: '#cbd5e1',
+  textMuted: '#8b9ab1',
+  border: '#334155',
+  cardBorder: 'rgba(148, 163, 184, 0.12)',
+  tagBg: 'rgba(148, 163, 184, 0.1)',
+  shadow:
+    '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
+  shadowHover:
+    '0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.25)',
 };

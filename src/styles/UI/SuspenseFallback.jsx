@@ -1,32 +1,33 @@
-import React from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import styled, { keyframes } from 'styled-components';
 
-const LoadingIcon = styled(motion.div)`
-  width: 6.4rem;
-  height: 6.4rem;
-  border: 0.8rem solid #ecf6fa;
-  border-top: 0.8rem solid #1e3e67;
-  border-radius: 50%;
+// Rendered before the theme and translations load, so it uses fixed colours
+// and shows both languages.
+const spin = keyframes`
+  to { transform: rotate(360deg); }
 `;
 
-const LoadingContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+const Spinner = styled.div`
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 20px;
+  border: 4px solid rgba(99, 102, 241, 0.2);
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: ${spin} 0.8s linear infinite;
+`;
+
+const Label = styled.p`
+  margin: 4px 0 0;
+  font-size: 15px;
 `;
 
 const SuspenseFallback = () => {
   return (
-    <LoadingContainer>
-      <LoadingIcon
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 0.6 }}
-      />
-      <h2>Loading...</h2>
-      <h2>読み込み中...</h2>
-    </LoadingContainer>
+    <div role='status'>
+      <Spinner />
+      <Label>Loading...</Label>
+      <Label lang='ja'>読み込み中...</Label>
+    </div>
   );
 };
 

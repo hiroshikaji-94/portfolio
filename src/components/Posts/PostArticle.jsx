@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n';
+import { FaArrowLeft } from 'react-icons/fa6';
+import { Tag, TagList } from '../../styles/UI/StyledUI';
 import {
   StyledArticleSection,
   StyledBackLink,
   StyledArticleMeta,
-  StyledArticleTags,
   StyledArticleFigure,
   StyledArticleBody,
   StyledArticleLead,
@@ -36,9 +36,9 @@ const ArticleBlock = ({ block, lang, figures }) => {
     case 'list':
       return (
         <StyledArticleList>
-          {block.items.map(item => {
-            return <li key={item}>{item}</li>;
-          })}
+          {block.items.map(item => (
+            <li key={item}>{item}</li>
+          ))}
         </StyledArticleList>
       );
     case 'dialogue':
@@ -48,7 +48,7 @@ const ArticleBlock = ({ block, lang, figures }) => {
         </StyledArticleDialogue>
       );
     case 'aside':
-      return <StyledArticleAside lang={lang}>{block.text}</StyledArticleAside>;
+      return <StyledArticleAside>{block.text}</StyledArticleAside>;
     case 'end':
       return <StyledArticleEnd>{block.text}</StyledArticleEnd>;
     default:
@@ -57,17 +57,18 @@ const ArticleBlock = ({ block, lang, figures }) => {
 };
 
 const PostArticle = ({ post, index }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const lang = i18n.resolvedLanguage;
   const formattedDate = new Intl.DateTimeFormat(
     lang === 'ja' ? 'ja-JP' : 'en-US',
-    { year: 'numeric', month: 'long', day: 'numeric' }
+    { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }
   ).format(new Date(post.date));
   const body = t(`posts.${index}.body`, { returnObjects: true });
 
   return (
     <StyledArticleSection lang={lang}>
-      <StyledBackLink href='#posts' lang={lang}>
+      <StyledBackLink href='#posts'>
+        <FaArrowLeft aria-hidden='true' />
         {t('back-to-posts')}
       </StyledBackLink>
       <StyledArticleMeta>
@@ -76,11 +77,11 @@ const PostArticle = ({ post, index }) => {
         <span>{t('reading-time', { minutes: post.readingTime })}</span>
       </StyledArticleMeta>
       <h1>{t(`posts.${index}.title`)}</h1>
-      <StyledArticleTags>
-        {post.tags.map(tag => {
-          return <li key={tag}>{tag}</li>;
-        })}
-      </StyledArticleTags>
+      <TagList>
+        {post.tags.map(tag => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
+      </TagList>
       {post.imageUrl && (
         <StyledArticleFigure>
           <img
@@ -93,16 +94,14 @@ const PostArticle = ({ post, index }) => {
       )}
       <StyledArticleBody>
         {Array.isArray(body) &&
-          body.map((block, blockIndex) => {
-            return (
-              <ArticleBlock
-                key={`${block.type}-${blockIndex}`}
-                block={block}
-                lang={lang}
-                figures={post.figures}
-              />
-            );
-          })}
+          body.map((block, blockIndex) => (
+            <ArticleBlock
+              key={`${block.type}-${blockIndex}`}
+              block={block}
+              lang={lang}
+              figures={post.figures}
+            />
+          ))}
       </StyledArticleBody>
     </StyledArticleSection>
   );

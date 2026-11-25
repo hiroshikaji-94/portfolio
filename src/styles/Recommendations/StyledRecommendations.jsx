@@ -1,141 +1,114 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { cardStyles, hoverLift } from '../UI/StyledUI';
 
-export const StyledRecommendationsSection = styled.section`
+export const StyledRecommendationGrid = styled(motion.ul)`
   display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 6rem;
-  padding: 8rem 0 12rem 0;
-  margin: 0 auto;
-  max-width: 90rem;
-  position: relative;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
 
-  @media ${props => props.theme.bp.desktopS} {
-    margin: 0 12rem;
-  }
-  @media ${props => props.theme.bp.desktopXS} {
-    padding-top: 6rem;
-  }
-  @media ${props => props.theme.bp.tabletL} {
-    margin: 0 4rem;
-  }
-  @media ${props => props.theme.bp.mobileL} {
-    margin: 0 2rem;
-  }
-`;
-
-export const StyledRecommendationsList = styled(motion.ul)`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
-
-  @media ${props => props.theme.bp.tabletL} {
+  @media ${({ theme }) => theme.bp.laptop} {
     grid-template-columns: 1fr;
+    max-width: 760px;
+    margin: 0 auto;
   }
 `;
 
 export const StyledRecommendationCard = styled(motion.li)`
+  ${cardStyles}
+  ${hoverLift()}
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
-  height: 100%;
-  padding: 2.4rem 2.6rem;
-  border-radius: 0.4rem;
-  background-color: ${props => props.theme.primary.projectDescBg};
-  box-shadow: 0 0.3rem 0.9rem -0.4rem rgb(0 0 0 / 25%);
-  border-left: 0.3rem solid ${props => props.theme.tertiary.projectBorder};
+  padding: 2rem;
+
+  @media ${({ theme }) => theme.bp.mobile} {
+    padding: 1.5rem;
+  }
 `;
 
-/* Company badge: logo image when provided, otherwise a text chip.
-   Doubled selector to outrank the global a:link inline-block rule */
-export const StyledCompanyBadge = styled(motion.a)`
-  && {
-    display: inline-flex;
-    align-items: center;
-  }
-  align-self: flex-start;
-  gap: 0.8rem;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.4rem;
-  /* Logos are fixed-colour artwork, so the plate behind them stays constant
-     across light and dark themes; text-only badges follow the theme. */
-  background-color: ${props =>
-    props.$logoBg ? props.$logoBg : props.theme.primary.skillLiBg};
-  color: ${props => props.theme.primary.skillLiText};
-  font-family: ${props => props.theme.fonts.primary};
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.06rem;
-  box-shadow: 0 0.2rem 0.3rem 0 rgb(0 0 0 / 12%);
+export const StyledRecommendationTop = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 
-  & img {
-    height: 2.2rem;
+  > svg {
+    width: 2rem;
+    height: 2rem;
+    color: var(--primary);
+    opacity: 0.25;
+  }
+`;
+
+export const StyledCompanyBadge = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 2.5rem;
+  padding: ${({ $logoBg }) => ($logoBg ? '0.45rem 0.85rem' : '0 0.85rem')};
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background-color: ${({ $logoBg }) => $logoBg || 'var(--tag-bg)'};
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, translate 0.2s ease;
+
+  img {
+    height: 100%;
     width: auto;
-    max-width: 16rem;
+    max-width: 9rem;
     object-fit: contain;
   }
 
-  & svg {
-    width: 1.2rem;
-    height: 1.2rem;
-    stroke: currentColor;
-    opacity: 0.7;
+  svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  &:hover {
+    border-color: var(--primary);
+    color: var(--text);
+    translate: 0 -2px;
   }
 `;
 
 export const StyledRecommendationQuote = styled.blockquote`
-  position: relative;
-  margin: 0;
-  padding-top: 1.6rem;
+  flex: 1;
+  margin-bottom: 1.75rem;
 
-  & p {
-    position: relative;
-    font-size: 1.5rem;
-    font-weight: 500;
-    font-style: ${props => (props.lang === 'ja' ? 'normal' : 'italic')};
-
-    @media ${props => props.theme.bp.mobileL} {
-      font-size: 1.4rem;
-    }
+  p {
+    color: var(--text-body);
+    font-size: 1rem;
+    line-height: 1.75;
+    font-style: ${({ lang }) => (lang === 'ja' ? 'normal' : 'italic')};
   }
 `;
 
-export const StyledQuoteMark = styled(motion.span)`
-  position: absolute;
-  top: -1.4rem;
-  left: -0.4rem;
-  transform-origin: left center;
-  font-family: ${props => props.theme.fonts.primary};
-  font-size: 6rem;
-  line-height: 1;
-  color: ${props => props.theme.tertiary.projectBorder};
-`;
-
-export const StyledRecommendationAuthor = styled(motion.div)`
+export const StyledRecommendationAuthor = styled.div`
   display: flex;
   align-items: center;
-  gap: 1.4rem;
-  margin-top: auto;
-  padding-top: 0.4rem;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
 `;
 
-export const StyledRecommendationAvatar = styled(motion.div)`
+export const StyledRecommendationAvatar = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 5.2rem;
-  height: 5.2rem;
-  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
   overflow: hidden;
-  background-color: ${props => props.theme.primary.skillLiBg};
-  color: ${props => props.theme.primary.skillLiText};
-  border: 0.2rem solid ${props => props.theme.tertiary.projectBorder};
-  font-family: ${props => props.theme.fonts.primary};
-  font-size: 1.6rem;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  background: var(--gradient);
+  color: #ffffff;
   font-weight: 600;
-  letter-spacing: 0.05rem;
 
-  & img {
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -143,48 +116,40 @@ export const StyledRecommendationAvatar = styled(motion.div)`
 `;
 
 export const StyledRecommendationCredentials = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  flex: 1;
+  min-width: 0;
 
-  & h4 {
-    font-size: 1.7rem;
+  h4 {
+    font-size: 1rem;
   }
 
-  & span {
-    font-family: ${props => props.theme.fonts.primary};
-    font-size: 1.3rem;
-    font-weight: 600;
-    letter-spacing: 0.06rem;
-    color: ${props => props.theme.primary.p};
-    opacity: 0.85;
-
-    @media ${props => props.theme.bp.mobileL} {
-      font-size: 1.2rem;
-    }
+  span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.875rem;
   }
 `;
 
-/* Icon-only link to the recommender's profile; the label is screen-reader only */
-export const StyledProfileLink = styled(motion.a)`
-  && {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
+export const StyledProfileLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  margin-left: auto;
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
-  background-color: ${props => props.theme.primary.skillLiBg};
-  color: ${props => props.theme.primary.skillLiText};
-  border: 0.1rem solid ${props => props.theme.tertiary.linkBorder};
-  box-shadow: 0 0.2rem 0.3rem 0 rgb(0 0 0 / 12%);
+  background-color: var(--tag-bg);
+  color: var(--text-secondary);
+  transition: background-color 0.2s ease, color 0.2s ease, translate 0.2s ease;
 
-  & svg {
-    width: 1.8rem;
-    height: 1.8rem;
-    stroke: currentColor;
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  &:hover {
+    background-color: var(--primary);
+    color: #ffffff;
+    translate: 0 -2px;
   }
 `;

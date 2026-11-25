@@ -1,170 +1,158 @@
 import styled from 'styled-components';
 
 export const StyledArticleSection = styled.article`
-  display: flex;
-  flex-direction: column;
-  gap: 2.4rem;
-  padding: 10rem 0 12rem 0;
+  max-width: 760px;
   margin: 0 auto;
-  max-width: 76rem;
+  padding: calc(var(--nav-height) + 3rem) 1.5rem 6rem;
 
-  @media ${props => props.theme.bp.desktopS} {
-    margin: 0 12rem;
-  }
-  @media ${props => props.theme.bp.tabletL} {
-    margin: 0 4rem;
-  }
-  @media ${props => props.theme.bp.mobileL} {
-    margin: 0 2rem;
-    padding-top: 8rem;
-  }
-
-  & h1 {
-    font-family: ${props =>
-      props.lang === 'en'
-        ? props.theme.fonts.secondary
-        : props.theme.fonts.tertiary};
-    font-size: 4.6rem;
+  h1 {
+    margin: 1rem 0 1.25rem;
+    font-size: 2.75rem;
     line-height: 1.2;
-    font-weight: 400;
-    color: ${props => props.theme.primary.h2};
+  }
 
-    @media ${props => props.theme.bp.mobileL} {
-      font-size: 3.4rem;
+  @media ${({ theme }) => theme.bp.tablet} {
+    padding-bottom: 4rem;
+
+    h1 {
+      font-size: 2.25rem;
+    }
+  }
+
+  @media ${({ theme }) => theme.bp.mobile} {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    h1 {
+      font-size: 1.875rem;
     }
   }
 `;
 
 export const StyledBackLink = styled.a`
-  /* Doubled selector to outrank the global a:link inline-block rule */
-  && {
-    display: inline-flex;
-    align-items: center;
-  }
-  align-self: flex-start;
-  gap: 0.7rem;
-  font-family: ${props => props.theme.fonts.primary};
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: 0.1rem;
-  text-transform: capitalize;
-  border-bottom: 0.1rem solid ${props => props.theme.tertiary.linkBorder};
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
 
-  &::before {
-    content: '\\2190';
-    font-size: 1.6rem;
-    line-height: 1;
+  svg {
+    width: 0.85rem;
+    height: 0.85rem;
+    transition: translate 0.2s ease;
+  }
+
+  &:hover svg {
+    translate: -3px 0;
   }
 `;
 
 export const StyledArticleMeta = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  font-family: ${props => props.theme.fonts.primary};
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: 0.08rem;
-  color: ${props => props.theme.primary.h3};
-
-  & span[aria-hidden='true'] {
-    opacity: 0.6;
-  }
-`;
-
-export const StyledArticleTags = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-
-  & li {
-    padding: 0.7rem 1.3rem;
-    border-radius: 0.4rem;
-    background-color: ${props => props.theme.primary.skillLiBg};
-    color: ${props => props.theme.primary.skillLiText};
-    font-family: ${props => props.theme.fonts.primary};
-    font-weight: 600;
-    font-size: 1.3rem;
-    box-shadow: 0 0.2rem 0.3rem 0 rgb(0 0 0 / 12%);
-  }
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
 `;
 
 export const StyledArticleFigure = styled.figure`
-  margin: 1rem 0;
+  margin: 2.5rem 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 
-  & img {
+  img {
     width: 100%;
     height: auto;
-    border-radius: 0.4rem;
-    border: 0.1rem solid ${props => props.theme.neutrals.imageBorder};
-    box-shadow: 0 0.4rem 1.2rem -0.5rem rgb(0 0 0 / 30%);
   }
 `;
 
 export const StyledArticleBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  color: var(--text-body);
+  font-size: 1.0625rem;
+  line-height: 1.8;
 
-  & p {
-    font-size: 1.7rem;
-    font-weight: 500;
-    line-height: 1.8;
+  > * + * {
+    margin-top: 1.25rem;
+  }
 
-    @media ${props => props.theme.bp.mobileL} {
-      font-size: 1.6rem;
-    }
+  p {
+    color: var(--text-body);
   }
 `;
 
 export const StyledArticleLead = styled.p`
-  font-size: 2rem !important;
-  font-weight: 600 !important;
+  && {
+    color: var(--text);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.6;
+  }
 `;
 
 export const StyledArticleList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 2rem 2.4rem;
-  border-radius: 0.4rem;
-  background-color: ${props => props.theme.primary.projectDescBg};
-  border-left: 0.3rem solid ${props => props.theme.tertiary.projectBorder};
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius);
+  background-color: var(--bg-alt);
 
-  & li {
-    font-family: ${props => props.theme.fonts.primary};
-    font-size: 1.6rem;
-    font-weight: 600;
-    letter-spacing: 0.05rem;
+  li {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  li + li {
+    margin-top: 0.5rem;
+  }
+
+  li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 700;
   }
 `;
 
 export const StyledArticleDialogue = styled.p`
-  padding-left: 1.8rem;
-  border-left: 0.3rem solid ${props => props.theme.tertiary.projectBorder};
-  font-style: ${props => (props.lang === 'ja' ? 'normal' : 'italic')};
+  && {
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    border-left: 3px solid var(--primary);
+    color: var(--text);
+    font-style: ${({ lang }) => (lang === 'ja' ? 'normal' : 'italic')};
+  }
 
-  & strong {
+  strong {
+    color: var(--primary);
     font-style: normal;
-    color: ${props => props.theme.primary.h3};
+    font-weight: 600;
   }
 `;
 
 export const StyledArticleAside = styled.p`
-  align-self: center;
-  text-align: center;
-  font-family: ${props =>
-    props.lang === 'en'
-      ? props.theme.fonts.secondary
-      : props.theme.fonts.tertiary};
-  font-size: 2.8rem !important;
-  color: ${props => props.theme.primary.h2};
+  && {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+  }
 `;
 
 export const StyledArticleEnd = styled.p`
-  align-self: center;
-  margin-top: 2rem;
-  letter-spacing: 0.3rem !important;
-  color: ${props => props.theme.primary.h3} !important;
+  && {
+    margin-top: 3rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    letter-spacing: 0.2em;
+    text-align: center;
+  }
 `;

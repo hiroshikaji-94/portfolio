@@ -1,100 +1,133 @@
-import HeroBackground from './HeroBackground';
-import {
-  StyledHeroContainer,
-  StyledHeroSection,
-  StyledHeroSectionBackdrop,
-} from '../../styles/Hero/HeroLayout/StyledHeroLayout';
-import StyledTextBox from '../../styles/Hero/HeroText/StyledTextBox';
-import {
-  childHeroTextVariants,
-  parentHeroTextVariants,
-} from '../../utils/animations';
-import GlobeSVG from '/src/assets/icons/globe.svg';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import { useState } from 'react';
-import { StyledLanguageButton } from '../../styles/Hero/HeroText/StyledLanguageButton';
-import i18n from '../../i18n';
-import { useGlobalContext } from '../../Context/Context';
+import { FaBrain, FaDatabase, FaRobot } from 'react-icons/fa6';
+import { SiPython } from 'react-icons/si';
+import { Container, Button } from '../../styles/UI/StyledUI';
+import {
+  StyledHero,
+  StyledHeroGrid,
+  StyledHeroText,
+  StyledHeroTitle,
+  StyledGreeting,
+  StyledName,
+  StyledRole,
+  StyledCaret,
+  StyledHeroDescription,
+  StyledStats,
+  StyledActions,
+  StyledHeroVisual,
+  StyledFloatingIcon,
+  StyledScrollIndicator,
+} from '../../styles/Hero/StyledHero';
+import CodeWindow from './CodeWindow';
+import { useTypingEffect } from '../../hooks/useTypingEffect';
+import { slideInLeft, slideInRight } from '../../utils/animations';
+
+// Icons drift around the edges of the code window rather than over the code.
+const FLOATING_ICONS = [
+  {
+    Icon: SiPython,
+    style: { top: '-1.75rem', left: '-1rem', animationDelay: '0s' },
+  },
+  {
+    Icon: FaRobot,
+    style: { top: '18%', right: '-1.25rem', animationDelay: '1s' },
+  },
+  {
+    Icon: FaDatabase,
+    style: { bottom: '14%', left: '-1.5rem', animationDelay: '2s' },
+  },
+  {
+    Icon: FaBrain,
+    style: { bottom: '-1.75rem', right: '16%', animationDelay: '3s' },
+  },
+];
 
 const Hero = () => {
-  const [language, setLanguage] = useState('en');
   const { t } = useTranslation();
-  const lang = i18n.resolvedLanguage;
-  const { theme } = useGlobalContext();
   const shouldReduceMotion = useReducedMotion();
+  const [hasScrolled, setHasScrolled] = useState(false);
 
-  const toggleLanguageHandler = () => {
-    if (lang === 'en') {
-      i18next.changeLanguage('ja');
-      setLanguage('ja');
-    } else {
-      i18next.changeLanguage('en');
-      setLanguage('en');
-    }
-  };
+  const roles = t('hero.roles', { returnObjects: true });
+  const roleList = Array.isArray(roles) ? roles : [];
+  const stats = t('hero.stats', { returnObjects: true });
+  const typedRole = useTypingEffect(roleList, { enabled: !shouldReduceMotion });
+
+  useEffect(() => {
+    const handleScroll = () => setHasScrolled(window.scrollY > 100);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <>
-      <StyledHeroSectionBackdrop>
-        <StyledHeroSection>
-          <HeroBackground />
-          <StyledHeroContainer>
-            {/* This motion.div is necessary for a smooth transition between language button clicks */}
-            <motion.div
-              key={lang} // add a key prop with the language value
-            >
-              <StyledTextBox
-                pageTheme={theme}
-                lang={lang}
-                initial={shouldReduceMotion ? 'noMotion' : 'hidden'}
-                animate='visible'
-                variants={parentHeroTextVariants}
+    <StyledHero id='home' aria-labelledby='hero-title'>
+      <Container>
+        <StyledHeroGrid>
+          <StyledHeroText
+            initial={shouldReduceMotion ? 'visible' : 'hidden'}
+            animate='visible'
+            variants={slideInLeft}
+          >
+            <StyledHeroTitle id='hero-title'>
+              <StyledGreeting>{t('hero.greeting')}</StyledGreeting>
+              <StyledName>{t('hero.name')}</StyledName>
+              <span className='sr-only'>{roleList.join(', ')}</span>
+              <StyledRole aria-hidden='true'>
+                {typedRole}
+                {!shouldReduceMotion && <StyledCaret />}
+              </StyledRole>
+            </StyledHeroTitle>
+            <StyledHeroDescription>
+              {t('hero.description')}
+            </StyledHeroDescription>
+            {Array.isArray(stats) && (
+              <StyledStats>
+                {stats.map(stat => (
+                  <div key={stat.label}>
+                    <dt>{stat.label}</dt>
+                    <dd>{stat.value}</dd>
+                  </div>
+                ))}
+              </StyledStats>
+            )}
+            <StyledActions>
+              <Button href='#projects' $variant='primary'>
+                {t('hero.cta-work')}
+              </Button>
+              <Button href='#contact' $variant='secondary'>
+                {t('hero.cta-contact')}
+              </Button>
+            </StyledActions>
+          </StyledHeroText>
+          <StyledHeroVisual
+            initial={shouldReduceMotion ? 'visible' : 'hidden'}
+            animate='visible'
+            variants={slideInRight}
+          >
+            <CodeWindow />
+            {FLOATING_ICONS.map(({ Icon, style }) => (
+              <StyledFloatingIcon
+                key={style.animationDelay}
+                style={style}
+                aria-hidden='true'
               >
-                <motion.div variants={childHeroTextVariants}>
-                  <h1>
-                    {t('greetings')} <span lang={lang}>{t('name')}</span>
-                    <span>{t('name-end')}</span>
-                  </h1>
-                </motion.div>
-
-                <motion.div variants={childHeroTextVariants}>
-                  <h2> {t('sub-heading')}</h2>
-                </motion.div>
-                <motion.div variants={childHeroTextVariants}>
-                  <p>{t('more-info')}</p>
-                </motion.div>
-                <motion.div variants={childHeroTextVariants}>
-                  <motion.a
-                    pageTheme={theme}
-                    whileTap={
-                      shouldReduceMotion ? { scale: 1 } : { scale: 0.97 }
-                    }
-                    href='/Resume_Hiroshi_Kaji.pdf'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    {t('resume-btn')}
-                  </motion.a>
-
-                  <StyledLanguageButton
-                    whileTap={
-                      shouldReduceMotion ? { scale: 1 } : { scale: 0.97 }
-                    }
-                    aria-label='Change language'
-                    onClick={toggleLanguageHandler}
-                  >
-                    <GlobeSVG />
-                    <span>{lang === 'en' ? '日本語' : 'English'}</span>
-                  </StyledLanguageButton>
-                </motion.div>
-              </StyledTextBox>
-            </motion.div>
-          </StyledHeroContainer>
-        </StyledHeroSection>
-      </StyledHeroSectionBackdrop>
-    </>
+                <Icon />
+              </StyledFloatingIcon>
+            ))}
+          </StyledHeroVisual>
+        </StyledHeroGrid>
+      </Container>
+      <StyledScrollIndicator
+        href='#about'
+        aria-label={t('hero.scroll-label')}
+        $hidden={hasScrolled}
+        tabIndex={hasScrolled ? -1 : 0}
+      >
+        <span />
+      </StyledScrollIndicator>
+    </StyledHero>
   );
 };
 

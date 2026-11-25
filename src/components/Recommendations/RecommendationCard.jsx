@@ -1,36 +1,35 @@
 import { useTranslation } from 'react-i18next';
 import {
+  FaArrowUpRightFromSquare,
+  FaLinkedin,
+  FaQuoteLeft,
+} from 'react-icons/fa6';
+import ZoomInfoSVG from '/src/assets/icons/zoominfo.svg';
+import {
   StyledRecommendationCard,
+  StyledRecommendationTop,
   StyledCompanyBadge,
   StyledRecommendationQuote,
-  StyledQuoteMark,
   StyledRecommendationAuthor,
   StyledRecommendationAvatar,
   StyledRecommendationCredentials,
   StyledProfileLink,
 } from '../../styles/Recommendations/StyledRecommendations';
-import {
-  childRecommendationVariants,
-  recommendationDetailVariants,
-  quoteMarkVariants,
-} from '../../utils/animations';
-import ExternalLinkSVG from '/src/assets/icons/external-link.svg';
-import LinkedinSVG from '/src/assets/icons/linkedin.svg';
-import ZoomInfoSVG from '/src/assets/icons/zoominfo.svg';
+import { fadeUp } from '../../utils/animations';
 
 // The profile icon follows whichever network the link points at, so adding a
 // recommendation only ever means setting `profileUrl`.
 const PROFILE_NETWORKS = [
-  { host: 'linkedin.com', label: 'LinkedIn', Icon: LinkedinSVG },
+  { host: 'linkedin.com', label: 'LinkedIn', Icon: FaLinkedin },
   { host: 'zoominfo.com', label: 'ZoomInfo', Icon: ZoomInfoSVG },
 ];
 
 const resolveNetwork = url => {
   const match = PROFILE_NETWORKS.find(network => url.includes(network.host));
-  return match ?? { label: 'website', Icon: ExternalLinkSVG };
+  return match ?? { label: 'website', Icon: FaArrowUpRightFromSquare };
 };
 
-const RecommendationCard = ({ recommendation, lang }) => {
+const RecommendationCard = ({ recommendation }) => {
   const { t } = useTranslation();
   const {
     name,
@@ -48,43 +47,32 @@ const RecommendationCard = ({ recommendation, lang }) => {
   const { label, Icon } = resolveNetwork(profileUrl);
 
   return (
-    <StyledRecommendationCard
-      variants={childRecommendationVariants}
-      whileHover={{ y: -6 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-    >
-      <StyledCompanyBadge
-        href={companyUrl}
-        target='_blank'
-        rel='noreferrer noopener'
-        aria-label={`${company} website`}
-        $logoBg={logoUrl ? logoBg : undefined}
-        variants={recommendationDetailVariants}
-        whileHover={{ y: -2, scale: 1.04 }}
-        whileTap={{ scale: 0.97 }}
-      >
-        {logoUrl ? (
-          <img src={logoUrl} alt={company} />
-        ) : (
-          <>
-            {company}
-            <ExternalLinkSVG aria-hidden='true' />
-          </>
-        )}
-      </StyledCompanyBadge>
+    <StyledRecommendationCard variants={fadeUp}>
+      <StyledRecommendationTop>
+        <StyledCompanyBadge
+          href={companyUrl}
+          target='_blank'
+          rel='noreferrer noopener'
+          aria-label={`${company} website`}
+          $logoBg={logoUrl ? logoBg : undefined}
+        >
+          {logoUrl ? (
+            <img src={logoUrl} alt={company} />
+          ) : (
+            <>
+              {company}
+              <FaArrowUpRightFromSquare aria-hidden='true' />
+            </>
+          )}
+        </StyledCompanyBadge>
+        <FaQuoteLeft aria-hidden='true' />
+      </StyledRecommendationTop>
       <StyledRecommendationQuote lang={quoteLang} cite={profileUrl}>
-        <StyledQuoteMark aria-hidden='true' variants={quoteMarkVariants}>
-          &ldquo;
-        </StyledQuoteMark>
         <p lang={quoteLang}>{quote}</p>
       </StyledRecommendationQuote>
-      <StyledRecommendationAuthor variants={recommendationDetailVariants}>
-        <StyledRecommendationAvatar
-          aria-hidden='true'
-          whileHover={{ scale: 1.08, rotate: -2 }}
-          transition={{ type: 'spring', stiffness: 320, damping: 18 }}
-        >
-          {avatarUrl ? <img src={avatarUrl} alt='' /> : initials}
+      <StyledRecommendationAuthor>
+        <StyledRecommendationAvatar aria-hidden='true'>
+          {avatarUrl ? <img src={avatarUrl} alt='' loading='lazy' /> : initials}
         </StyledRecommendationAvatar>
         <StyledRecommendationCredentials>
           <h4>{name}</h4>
@@ -96,9 +84,6 @@ const RecommendationCard = ({ recommendation, lang }) => {
           target='_blank'
           rel='noreferrer noopener'
           aria-label={`${t('view-profile')}: ${name} (${label})`}
-          whileHover={{ scale: 1.15, rotate: 5 }}
-          whileTap={{ scale: 0.92 }}
-          transition={{ type: 'spring', stiffness: 340, damping: 16 }}
         >
           <Icon aria-hidden='true' />
         </StyledProfileLink>

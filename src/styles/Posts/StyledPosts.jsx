@@ -1,205 +1,158 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
+import { cardStyles, hoverLift } from '../UI/StyledUI';
 
-export const StyledPostsSection = styled.section`
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 6rem;
-  padding: 8rem 0 12rem 0;
-  margin: 0 auto;
-  max-width: 90rem;
-  position: relative;
-
-  @media ${props => props.theme.bp.desktopS} {
-    margin: 0 12rem;
-  }
-  @media ${props => props.theme.bp.desktopXS} {
-    padding-top: 6rem;
-  }
-  @media ${props => props.theme.bp.tabletL} {
-    margin: 0 4rem;
-  }
-  @media ${props => props.theme.bp.mobileL} {
-    margin: 0 2rem;
-  }
+const shimmer = keyframes`
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 `;
 
-/* three posts per row, dropping to two then one as the viewport narrows */
-export const StyledPostsList = styled(motion.ul)`
+export const StyledPostGrid = styled(motion.ul)`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-
-  @media ${props => props.theme.bp.desktopXS} {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media ${props => props.theme.bp.tabletL} {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: 2rem;
 `;
 
 export const StyledPostCard = styled(motion.li)`
+  ${cardStyles}
+  ${hoverLift()}
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  height: 100%;
-  padding: 2.4rem 2.6rem;
-  border-radius: 0.4rem;
-  background-color: ${props => props.theme.primary.projectDescBg};
-  box-shadow: 0 0.3rem 0.9rem -0.4rem rgb(0 0 0 / 25%);
-  border-top: 0.3rem solid ${props => props.theme.tertiary.projectBorder};
-  transition: transform 0.25s, box-shadow 0.25s;
-
-  &:hover {
-    transform: translateY(-0.4rem);
-    box-shadow: 0 0.8rem 1.6rem -0.5rem rgb(0 0 0 / 30%);
-  }
-
-  & h3 {
-    margin: 0;
-    font-weight: 500;
-    font-size: 2.1rem;
-    line-height: 1.35;
-
-    @media ${props => props.theme.bp.mobileL} {
-      font-size: 1.9rem;
-    }
-  }
-
-  & p {
-    font-size: 1.5rem;
-    font-weight: 500;
-    /* keeps cards in a row about the same height whatever the excerpt length */
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-
-    @media ${props => props.theme.bp.mobileL} {
-      font-size: 1.4rem;
-    }
-  }
-`;
-
-/* Empty slot for a post that has not been written yet: same shell as a real
-   card so the row keeps its rhythm, but with neutral blocks instead of text. */
-export const StyledPostSkeleton = styled(motion.li)`
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  height: 100%;
-  padding: 2.4rem 2.6rem;
-  border-radius: 0.4rem;
-  background-color: ${props => props.theme.primary.projectDescBg};
-  box-shadow: 0 0.3rem 0.9rem -0.4rem rgb(0 0 0 / 25%);
-  border-top: 0.3rem solid ${props => props.theme.neutrals.imageBorder};
-  opacity: 0.55;
-`;
-
-/* currentColor tints the blocks from the card's own text colour, so a single
-   definition reads correctly against both the light and dark themes */
-export const StyledSkeletonBlock = styled.div`
-  background-color: currentColor;
-  opacity: 0.12;
-  border-radius: 0.3rem;
-  width: ${props => props.$width ?? '100%'};
-  height: ${props => props.$height ?? '1.4rem'};
-  flex-shrink: 0;
-`;
-
-export const StyledSkeletonImage = styled(StyledSkeletonBlock)`
-  margin: -2.4rem -2.6rem 0.6rem -2.6rem;
-  width: auto;
-  height: auto;
-  aspect-ratio: 1024 / 558;
-  border-radius: 0;
-`;
-
-export const StyledSkeletonTags = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-top: auto;
-  padding-top: 0.8rem;
-`;
-
-export const StyledPostsButton = styled(motion.button)`
-  justify-self: center;
-  border: 0.12rem solid ${props => props.theme.tertiary.linkBorder};
-  background-color: transparent;
-  padding: 1.45rem 2.45rem;
-`;
-
-/* negative margins let the image bleed to the card edges through its padding */
-export const StyledPostImage = styled.div`
-  margin: -2.4rem -2.6rem 0.6rem -2.6rem;
   overflow: hidden;
-  border-bottom: 0.1rem solid ${props => props.theme.neutrals.imageBorder};
 
-  /* a shared ratio keeps every card's text starting at the same height,
-     whatever the source image happens to be */
-  & img {
+  &:hover img {
+    transform: scale(1.03);
+  }
+`;
+
+export const StyledPostImage = styled.a`
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--bg-alt);
+
+  img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 1024 / 558;
+    height: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position: center top;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+`;
+
+export const StyledPostBody = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.5rem 1.75rem 1.75rem;
+
+  h3 {
+    margin: 1rem 0 0.75rem;
+    font-size: 1.375rem;
+    line-height: 1.3;
+
+    a {
+      color: var(--text);
+    }
+
+    a:hover {
+      color: var(--primary);
+    }
+  }
+
+  > p {
+    display: -webkit-box;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+    font-size: 0.9375rem;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
   }
 `;
 
 export const StyledPostMeta = styled.div`
   display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  font-family: ${props => props.theme.fonts.primary};
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.08rem;
-  color: ${props => props.theme.primary.h3};
-
-  & span[aria-hidden='true'] {
-    opacity: 0.6;
-  }
-
-  @media ${props => props.theme.bp.mobileL} {
-    font-size: 1.2rem;
-  }
-`;
-
-export const StyledPostTags = styled.ul`
-  display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: auto;
-  padding-top: 0.8rem;
+  gap: 0.5rem;
 
-  & li {
-    padding: 0.7rem 1.3rem;
-    border-radius: 0.4rem;
-    background-color: ${props => props.theme.primary.skillLiBg};
-    color: ${props => props.theme.primary.skillLiText};
-    font-family: ${props => props.theme.fonts.primary};
-    font-weight: 600;
-    font-size: 1.3rem;
-    box-shadow: 0 0.2rem 0.3rem 0 rgb(0 0 0 / 12%);
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background-color: var(--tag-bg);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
 
-    @media ${props => props.theme.bp.mobileL} {
-      font-size: 1.2rem;
-      padding: 0.6rem 1.1rem;
-    }
+  span:first-child {
+    background-color: var(--primary);
+    color: #ffffff;
+  }
+
+  svg {
+    width: 0.7rem;
+    height: 0.7rem;
   }
 `;
 
-export const StyledPostLink = styled.a`
-  align-self: flex-start;
-  font-family: ${props => props.theme.fonts.primary};
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: 0.1rem;
-  text-transform: capitalize;
-  border-bottom: 0.1rem solid ${props => props.theme.tertiary.linkBorder};
+export const StyledPostFooter = styled.div`
+  margin-top: auto;
+  padding-top: 1.5rem;
+`;
 
-  &::after {
-    content: '\\2192';
-    margin-left: 0.6rem;
+export const StyledShowMore = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+`;
+
+// Placeholder card for a post that has not been written yet.
+export const StyledPostSkeleton = styled(motion.li)`
+  ${cardStyles}
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+export const StyledSkeletonBlock = styled.span`
+  display: block;
+  width: ${({ $width }) => $width || '100%'};
+  height: ${({ $height }) => $height || '0.9rem'};
+  border-radius: ${({ $round }) => ($round ? '1rem' : '0.375rem')};
+  background: linear-gradient(
+    90deg,
+    var(--tag-bg) 25%,
+    var(--border) 50%,
+    var(--tag-bg) 75%
+  );
+  background-size: 200% 100%;
+  animation: ${shimmer} 1.6s ease-in-out infinite;
+
+  & + & {
+    margin-top: 0.75rem;
+  }
+`;
+
+export const StyledSkeletonImage = styled(StyledSkeletonBlock)`
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 0;
+`;
+
+export const StyledSkeletonBody = styled.div`
+  padding: 1.5rem 1.75rem 1.75rem;
+`;
+
+export const StyledSkeletonRow = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+
+  span + span {
+    margin-top: 0;
   }
 `;

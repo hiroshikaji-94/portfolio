@@ -1,95 +1,305 @@
 {
   "app-title": "ホーム | カジ　ヒロシ • ポートフォリオ",
   "loading": "読み込み中...",
-  "greetings": "こんにちは、",
-  "name": "ヒロシ",
-  "name-end": "です。",
-  "sub-heading": "東京を拠点とするシニアソフトウェアエンジニアです。",
-  "more-info": "スケーラブルなAIシステム、マイクロサービス、クラウドネイティブアプリケーションを構築しています。LLMを活用したソリューションやマルチエージェント構成から、データパイプライン、エンタープライズ向け基盤まで幅広く手がけ、8年以上の経験を活かして複雑な要件を、確かなビジネス成果を生み出す信頼性の高いシステムへと落とし込みます。",
-  "resume-btn": "レジュメ",
+  "navigation": [
+    {
+      "menuTitle": "ホーム",
+      "href": "#home"
+    },
+    {
+      "menuTitle": "私について",
+      "href": "#about"
+    },
+    {
+      "menuTitle": "スキル",
+      "href": "#technology"
+    },
+    {
+      "menuTitle": "プロジェクト",
+      "href": "#projects"
+    },
+    {
+      "menuTitle": "経歴",
+      "href": "#experience"
+    },
+    {
+      "menuTitle": "記事",
+      "href": "#posts"
+    },
+    {
+      "menuTitle": "推薦",
+      "href": "#recommendations"
+    },
+    {
+      "menuTitle": "お問い合わせ",
+      "href": "#contact"
+    }
+  ],
+  "nav": {
+    "label": "メイン",
+    "home-label": "カジ　ヒロシ（ページの先頭へ）",
+    "language-label": "言語を英語に切り替える",
+    "theme-to-dark": "ダークテーマに切り替える",
+    "theme-to-light": "ライトテーマに切り替える",
+    "menu-label": "メニュー"
+  },
+  "hero": {
+    "greeting": "こんにちは、",
+    "name": "カジ　ヒロシ",
+    "roles": [
+      "シニアソフトウェアエンジニア",
+      "AIエンジニア",
+      "LLM・エージェント開発者",
+      "クラウドネイティブ開発者"
+    ],
+    "description": "東京を拠点に、LLMを活用したプロダクトやマルチエージェントシステム、データパイプライン、クラウドネイティブ基盤を構築しています。複雑な要件を、確かなビジネス成果につながる信頼性の高いシステムへと落とし込みます。",
+    "stats": [
+      {
+        "value": "8年以上",
+        "label": "開発経験"
+      },
+      {
+        "value": "6件以上",
+        "label": "AIプロジェクト"
+      },
+      {
+        "value": "上位3%",
+        "label": "Upwork人材"
+      }
+    ],
+    "cta-work": "実績を見る",
+    "cta-contact": "お問い合わせ",
+    "scroll-label": "「私について」へスクロール"
+  },
   "about-heading": "私について",
   "about-text-top": "こんにちは、ヒロシです。シニアソフトウェアエンジニアとして、スケーラブルなAIシステム、マイクロサービス、クラウドネイティブアプリケーションを8年以上にわたり構築してきました。LLMを活用したソリューション、データパイプライン、エンタープライズ級のアーキテクチャを専門とし、マルチエージェントLLM基盤から高スループットなバックエンドサービスまで、フルスタックで開発しています。",
   "about-text-bottom": "業務を最適化し、測定可能なビジネス価値を生み出す本番品質のシステムを数多く提供してきました。Python・Go・Node.js、そしてAzureやGoogle Cloudといった最新のクラウド基盤に深い専門性を持ち、複雑な要件を、チームが安心して頼れるエレガントで信頼性の高いシステムへと落とし込むことに情熱を注いでいます。",
-  "technology-heading": "テクノロジー",
-  "projects-heading": "プロジェクト",
-  "experience-heading": "経歴",
-  "posts-heading": "記事",
-  "recommendations-heading": "推薦",
-  "read-post": "記事を読む",
-  "reading-time": "約{{minutes}}分",
-  "featured-tag": "プロジェクト",
+  "about": {
+    "subtitle": "複雑な要件を、信頼できるシステムへ",
+    "strengths-title": "強み",
+    "strengths": [
+      {
+        "title": "LLM・エージェント開発",
+        "description": "LangGraph・RAG・独自のMCPサーバーを用いたマルチエージェントアシスタントで、企業の実務を自動化します。"
+      },
+      {
+        "title": "データエンジニアリング",
+        "description": "BigQueryでのクラウドネイティブなETL、データ品質チェック付きのdbtモデル、モデルを常に最新に保つAirflowパイプラインを構築します。"
+      },
+      {
+        "title": "スケーラブルなマイクロサービス",
+        "description": "REST・gRPC・GraphQL・Kafkaで連携するGo/Node.jsサービスを、Kubernetes上のCI/CDで届けます。"
+      },
+      {
+        "title": "本番運用の信頼性",
+        "description": "監視、LLM間のフォールバック、オンコール対応により、重要な文書処理サービスで99.9%の稼働率を維持しました。"
+      }
+    ],
+    "journey-title": "これまでの歩み",
+    "journey": [
+      {
+        "period": "2025年 – 現在",
+        "title": "シニアソフトウェアエンジニア",
+        "detail": "Duraflame, Inc. — マルチエージェントLLMアシスタントとリテール分析基盤"
+      },
+      {
+        "period": "2021年 – 2024年",
+        "title": "シニアソフトウェアエンジニア",
+        "detail": "Chemican Inc. — 多言語ドキュメントAIと規制データパイプライン"
+      },
+      {
+        "period": "2016年 – 2021年",
+        "title": "ソフトウェア開発者 II",
+        "detail": "Grab — 決済処理向けのGo/Node.jsマイクロサービス"
+      },
+      {
+        "period": "2012年 – 2016年",
+        "title": "コンピュータサイエンス学士",
+        "detail": "シンガポール国立大学"
+      }
+    ],
+    "photo-alt": "カジ　ヒロシのポートレート",
+    "profile-name": "カジ　ヒロシ",
+    "profile-role": "シニアソフトウェアエンジニア · 東京",
+    "profile-stats": [
+      {
+        "value": "100%",
+        "label": "Upworkジョブ成功率"
+      },
+      {
+        "value": "5.0",
+        "label": "クライアント評価"
+      }
+    ],
+    "core-tech-title": "主要技術"
+  },
+  "technology-heading": "技術スタック",
+  "skills": {
+    "subtitle": "AIプロダクト、データ基盤、バックエンドを支える技術",
+    "groups": {
+      "ai": {
+        "title": "AI・機械学習",
+        "items": {
+          "llm": "LLM・エージェント",
+          "rag": "RAG・検索",
+          "dl": "ディープラーニング",
+          "mlops": "MLOps・分析"
+        }
+      },
+      "data": {
+        "title": "データ・クラウド",
+        "items": {
+          "pipelines": "データパイプライン",
+          "databases": "データベース",
+          "cloud": "クラウド",
+          "containers": "コンテナ"
+        }
+      },
+      "software": {
+        "title": "ソフトウェア開発",
+        "items": {
+          "backend": "バックエンド",
+          "frontend": "フロントエンド",
+          "apis": "API・メッセージング",
+          "devops": "DevOps・CI/CD"
+        }
+      }
+    }
+  },
+  "projects-heading": "注目のプロジェクト",
+  "projects-section": {
+    "subtitle": "実際のユーザーとビジネスのために構築したAIプロダクト",
+    "badge-live": "公開中",
+    "badge-code": "オープンソース",
+    "visit-site": "サイトを見る",
+    "view-code": "コードを見る",
+    "more-badge": "その他",
+    "additional-title": "その他のプロジェクト",
+    "additional-subtitle": "小規模なAIアプリや実験的なプロジェクトです。",
+    "browse-github": "GitHubを見る"
+  },
   "projects": [
     {
       "id": 1,
-      "description": "Lumaは、ユーザーがイベントを作成したり、予約済みのイベントを探したりできるプラットフォームです。イベントチケットの売買ができる購入システムを備えています。"
+      "description": "Writorは、不動産エージェント向けのAIマーケティングワークスペースです。物件を一度登録するだけで、物件紹介文、バーチャルステージング写真、物件紹介動画、SNS投稿、物件ページを数分で作成でき、コピーライターやステージャー、動画編集者に依頼する必要がありません。"
     },
     {
       "id": 2,
-      "description": "TalkHealth.aiは、AIによるインサイトで健康への関わり方を変革し、わかりやすく正確でパーソナライズされた医療情報を提供します。"
+      "description": "Plan Chatは、手描きのスケッチや図面の写真、短い説明文から、レイヤー分けされた寸法付きのCAD平面図をAIがブラウザ上でリアルタイムに作図するツールです。CADツールやチャットで編集し、3Dで確認して、DXF・DWG・PDF形式で書き出せます。"
     },
     {
       "id": 3,
-      "description": "Smart Land Plannerは、PDFの測量図からプロ品質の敷地計画図を生成するWebアプリです。測量図を高解像度の画像に変換し、Geminiが解析することで、数日かかる作業を数秒で仕上げます。"
+      "description": "SpeedLegalは、25種類以上の契約書を5つ以上の言語でレビューできるAI契約パラリーガルです。潜在的なリスクや不利な条項を検出し、自社の基準に基づいた修正案を提示するほか、重要な義務や期日を要約し、条項に関する質問にもわかりやすい言葉で回答します。"
     },
     {
       "id": 4,
-      "description": "HelloHistoryは、歴史上の人物とまるで実際に会話しているかのように対話できるAI搭載のモバイルアプリです。歴史上最も影響力のある人物たちから、人生・歴史・世界についての個人的な視点を得ることができます。"
+      "description": "FloorPlan AIは、テキストの説明、要件リスト、アップロードしたスケッチから編集可能な間取り図を生成するツールです。Webエディタで家具の配置やレイアウトを調整し、AIレンダリングやプレゼンテーションボードを作成して、DWG・DXF・PNG形式で書き出せます。"
     },
     {
       "id": 5,
-      "description": "Soccersmは、主要リーグや大会の試合前予測を、高い精度と詳細な分析付きで取得できるAIツールです。"
+      "description": "Perciは、Amazonセラー向けのAIリスティングプラットフォームです。実際のキーワードや競合のデータをもとに商品リスティングを一括で作成・最適化・翻訳し、Alexaが参照するバックエンド属性も補完したうえで、承認済みのリスティングをAmazonへ直接公開します。"
     },
     {
       "id": 6,
-      "description": "YOLOv8とEfficientNetで製造上の欠陥をリアルタイムに検出するコンピュータビジョンシステム。ONNXとTensorRTでエッジ推論向けに最適化しています。"
+      "description": "Linnk AIは、PDF、Word、スライドなど50以上の形式の文書を、表やフォント、レイアウトを保ったまま154の言語に翻訳します。スキャン画像や手書き文字もビジョンモデルが直接読み取り、文書の要約や形式変換、チャットでの質問にも対応しています。"
     },
     {
       "id": 7,
-      "description": "LayoutLMv3を用いてOCRに依存せず、請求書や契約書から構造化フィールドを抽出する文書理解パイプライン。大規模環境でフィールド単位94%以上の精度を実現します。"
+      "description": "AI Topic Explainerは、学びたいトピックを入力するだけで、AIが短くわかりやすい解説を生成するツールです。機械学習やブロックチェーン、光合成などの例もワンクリックで試せます。"
     },
     {
       "id": 8,
-      "description": "Fractalは、オンラインゲーマーがNFTを購入し、他のユーザーと競い合えるNFTマーケットプレイスです。各スプリントごとにゲームイベントを運営し、勝者には賞品を提供します。"
+      "description": "MeetMindは、会議の録音を検索可能な文字起こし、要約、アクションアイテムに変換します。文字起こしにはWhisper、分析にはGroq上のLLaMA 3.1を使用しています。"
     },
     {
       "id": 9,
-      "description": "Stromodoroは、ポモドーロ・テクニックを用いて生産性向上を支援するシンプルなWebサイトです。"
+      "description": "ThemeCraftは、作りたいWebテーマを言葉で説明するだけで、利用者自身のOpenAI APIキーを使ってユニークなテーマを生成します。"
     },
     {
       "id": 10,
-      "description": "Ripplenoteは、ノートの作成と共有のためのシンプルでエレガントなプラットフォームを提供するWebサイトです。"
+      "description": "QuizLensは、アップロードした動画から音声を抽出してクイズを自動生成します。スコアの振り返りやリーダーボードで学習の成果も確認できます。"
     },
     {
       "id": 11,
-      "description": "映画やトレンドに関する情報を探している人のためのWebサイトプロジェクトです。"
+      "description": "WikiQuizは、WikipediaのURLを貼り付けるだけでAIがクイズを生成し、関連トピックの提案や過去のクイズの履歴も確認できます。"
     },
     {
       "id": 12,
-      "description": "Reactで構築したタスクマネージャー／ToDoアプリです。ユーザーはタスクの追加・削除・編集・閲覧ができます。"
+      "description": "FlashGeniusは、貼り付けたノートやアップロードしたPDF・DOCXファイルから、フラッシュカード、クイズ、学習用の要約を生成し、PDFとしてダウンロードできます。"
     },
     {
       "id": 13,
-      "description": "BloomyWeatherは、Weather APIを用いて対象地点の現在の天気を表示するプロジェクトです。"
+      "description": "AI Quiz Generatorは、短い説明文からOpenAIで学習用のインタラクティブなクイズを作成し、Supabaseに保存します。APIキーがない場合は、データベースの問題からクイズを作成します。"
     },
     {
       "id": 14,
-      "description": "Foodieは、Forkify APIと連携してレシピデータを取得・表示するバニラJavaScriptアプリケーションです。"
+      "description": "手元の食材を入力すると、Google Geminiが1人前あたりの栄養素と料理の写真付きで3つのレシピを提案します。食事制限のフィルター、お気に入り、買い物リストの自動作成にも対応しています。"
     }
   ],
+  "experience-heading": "職務経歴",
+  "experience-section": {
+    "subtitle": "8年以上にわたり本番システムを届けてきた経歴",
+    "present": "現在",
+    "achievements": "主な成果",
+    "highlights": "主な取り組み",
+    "badges": {
+      "current": "現職",
+      "data": "データ・AI",
+      "backend": "バックエンド"
+    }
+  },
   "experience": [
     {
       "id": 1,
-      "description": "Duraflame, Inc. でシニアソフトウェアエンジニアとして、GPT-4o・Azure AI Search・LangGraph・RAGを用いたモジュール型のマルチエージェントLLMプロジェクト管理アシスタントを設計・実装しました。独自のModel Context Protocol（MCP）サーバーでエージェント間の連携を標準化し、議事録要約・タスク抽出・Jira/Slackへの反映を自動化して手作業の調整を40%削減。ファインチューニングしたBERTによる感情分析・リテールインテリジェンス基盤で日次5万件超のレビューを92%の精度で解析し、顧客満足度の15%向上に貢献しました。Docker・Apache Airflowでデータ取り込みと再学習を自動化し、Redisキャッシュ層で大規模なリテール分析でも高速な推論を維持しています。"
+      "role": "シニアソフトウェアエンジニア",
+      "summary": "企業チーム向けに、マルチエージェントLLMアシスタントとリテール分析基盤を構築しています。",
+      "metrics": [
+        "手作業による調整を削減",
+        "日次で解析するレビュー数",
+        "感情分析モデルの精度"
+      ],
+      "highlights": [
+        "GPT-4o・Azure AI Search・LangGraph・RAGを用いて、モジュール型のマルチエージェント・プロジェクト管理アシスタントを設計しました。",
+        "独自のModel Context Protocol（MCP）サーバーを構築し、ワークフロー全体でエージェント間の情報連携を標準化しました。",
+        "議事録の要約、タスク抽出、Jira/Slackへの反映を自動化し、手作業による調整を40%削減しました。",
+        "ファインチューニングしたBERTによるリテール分析エンジンを、Airflowでの再学習とRedisキャッシュとともに提供し、顧客満足度15%向上に貢献しました。"
+      ]
     },
     {
       "id": 2,
-      "description": "Chemican Inc. でシニアソフトウェアエンジニアとして、Google Cloud Document AIと複数のLLM（Claude・GPT-4・Gemini）を用いて、日本語・英語・中国語の安全データシート（SDS）の多言語対応を構築しました。モデル間のフォールバックを備えた堅牢な処理系で、文書分類を95%の精度で自動化。規制データベース（NITE CHRIP・TSCA）を並列クローラーで統合し、Cloud StorageとBigQueryによるクラウドネイティブなETL基盤を構築、dbtによる初期プロジェクトとデータ品質チェックを整備しました。GitHub ActionsによるCI/CDでクローラーをCloud Runジョブとしてスケジュール実行し、24時間体制のオンコールで稼働率99.9%を維持しました。"
+      "role": "シニアソフトウェアエンジニア",
+      "summary": "Google Cloud上で、多言語ドキュメントAIと規制データのパイプラインを構築しました。",
+      "metrics": [
+        "文書分類の精度",
+        "24時間365日体制での稼働率",
+        "対応したSDSの言語数"
+      ],
+      "highlights": [
+        "Document AIとClaude・GPT-4・Geminiを組み合わせ、モデル間のフォールバックを備えた日本語・英語・中国語のSDS（安全データシート）対応を実装しました。",
+        "規制データベース（NITE CHRIP、TSCA）をBigQueryのETLパイプラインに統合する並列クローラーを設計しました。",
+        "SDSデータ移行のため、dbt_expectationsによるデータ品質チェックを含むdbtプロジェクトの初期構成を整備しました。",
+        "GitHub ActionsでCI/CDを自動化し、クローラーをスケジュール実行のCloud Runジョブとしてデプロイしました。"
+      ]
     },
     {
       "id": 3,
-      "description": "Grab でソフトウェアデベロッパーIIとして、Node.js・Express.js・MongoDB・PostgreSQLでRESTful APIとマイクロサービスを開発し、認証・検証・リスク評価といった取引処理をGoで実装。REST・gRPC・Kafkaで連携させました。GolangバックエンドでREST APIをGraphQLへ移行してReactフロントエンドと統合し、Kubernetes上のgRPC通信の負荷分散を最適化。メモリリークやタイムアウトを修正して5つのサービスのAPIの耐障害性を高めました。Docker・GitHub Actions・Jenkinsを用いて、Google Kubernetes Engine上のCI/CDで一貫してデリバリーしました。"
+      "role": "ソフトウェア開発者 II",
+      "summary": "決済処理やヘルスケアアプリケーション向けに、GoとNode.jsのマイクロサービスを開発しました。",
+      "metrics": [],
+      "highlights": [
+        "Node.js・Express・MongoDB・PostgreSQLでRESTful APIとマイクロサービスを開発しました。",
+        "認証・検証・リスク評価を担うGoサービスを開発し、RESTとKafkaで連携させました。",
+        "Goバックエンド上でREST APIをGraphQLへ移行し、Kubernetes上のgRPC負荷分散を最適化しました。",
+        "5つのGoマイクロサービスでメモリリークを解消し、コンテキストベースのタイムアウトを導入して、応答速度と耐障害性を高めました。"
+      ]
     }
   ],
+  "posts-heading": "最新の記事",
+  "posts-section": {
+    "subtitle": "仕事を通じて得た経験と学び"
+  },
+  "read-post": "記事を読む",
+  "reading-time": "約{{minutes}}分",
   "posts": [
     {
       "id": 1,
@@ -298,42 +508,30 @@
     }
   ],
   "back-to-posts": "記事一覧に戻る",
-  "view-profile": "プロフィールを見る",
   "show-more-btn": "もっと見る",
   "show-less-btn": "非表示",
-  "learn-more": "詳しく見る",
-  "navigation": [
-    {
-      "menuTitle": "ホーム",
-      "href": "/#home"
-    },
-    {
-      "menuTitle": "私について",
-      "href": "/#about"
-    },
-    {
-      "menuTitle": "テクノロジー",
-      "href": "/#technology"
-    },
-    {
-      "menuTitle": "プロジェクト",
-      "href": "/#projects"
-    },
-    {
-      "menuTitle": "経歴",
-      "href": "/#experience"
-    },
-    {
-      "menuTitle": "記事",
-      "href": "/#posts"
-    },
-    {
-      "menuTitle": "推薦",
-      "href": "/#recommendations"
-    }
-  ],
-  "footer-contact": "メール",
-  "footer-location": "所在地",
+  "recommendations-heading": "推薦",
+  "recommendations-section": {
+    "subtitle": "一緒に働いた方々からの声"
+  },
+  "view-profile": "プロフィールを見る",
+  "contact": {
+    "title": "お問い合わせ",
+    "subtitle": "新しいプロジェクトやコラボレーションのご相談をお待ちしています",
+    "email": "メール",
+    "location": "所在地",
+    "cta-title": "一緒にお仕事しませんか？",
+    "cta-text": "AIプロダクトやデータ基盤、バックエンドシステムについて、いつでも気軽にご相談ください。新規開発のエンジニアをお探しの場合も、既存システムの拡張でお困りの場合も、ぜひお話ししましょう。",
+    "send-email": "メールを送る"
+  },
   "footer-address": "〒132-0013 東京都江戸川区江戸川2-32-31",
-  "footer-message": "カジ　ヒロシによるウェブサイト"
+  "footer": {
+    "name": "カジ　ヒロシ",
+    "tagline": "シニアソフトウェアエンジニア · 東京",
+    "copyright": "© {{year}} カジ　ヒロシ. All rights reserved."
+  },
+  "common": {
+    "resume": "レジュメをダウンロード",
+    "tech-stack": "技術スタック"
+  }
 }

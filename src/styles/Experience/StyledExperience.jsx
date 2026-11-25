@@ -1,133 +1,115 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { cardStyles, hoverLift } from '../UI/StyledUI';
 
-export const StyledExperienceSection = styled.section`
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 6rem;
-  padding: 8rem 0 12rem 0;
+export const StyledExperienceList = styled.ol`
+  max-width: 900px;
   margin: 0 auto;
-  max-width: 90rem;
-  position: relative;
+`;
 
-  @media ${props => props.theme.bp.desktopS} {
-    margin: 0 12rem;
+export const StyledExperienceCard = styled(motion.li)`
+  ${cardStyles}
+  ${hoverLift('2px')}
+  padding: 2rem;
+
+  & + & {
+    margin-top: 2rem;
   }
-  @media ${props => props.theme.bp.desktopXS} {
-    padding-top: 6rem;
+
+  h4 {
+    margin-bottom: 1rem;
+    font-size: 1.375rem;
   }
-  @media ${props => props.theme.bp.tabletL} {
-    margin: 0 4rem;
-  }
-  @media ${props => props.theme.bp.mobileL} {
-    margin: 0 2rem;
+
+  @media ${({ theme }) => theme.bp.mobile} {
+    padding: 1.5rem;
   }
 `;
 
-export const StyledExperienceList = styled.ul`
-  position: relative;
+export const StyledExperienceHeader = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 5rem;
-  padding-left: 3.5rem;
-
-  /* vertical timeline rail */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0.6rem;
-    bottom: 0.6rem;
-    left: 0.4rem;
-    width: 0.2rem;
-    background: linear-gradient(
-      to bottom,
-      ${props => props.theme.tertiary.projectBorder},
-      transparent
-    );
-  }
-
-  @media ${props => props.theme.bp.mobileL} {
-    padding-left: 2.6rem;
-  }
-`;
-
-export const StyledExperienceItem = styled(motion.li)`
-  position: relative;
-
-  /* timeline node */
-  &::before {
-    content: '';
-    position: absolute;
-    left: -3.5rem;
-    top: 0.4rem;
-    width: 1.2rem;
-    height: 1.2rem;
-    border-radius: 50%;
-    background-color: ${props => props.theme.primary.body};
-    border: 0.3rem solid ${props => props.theme.tertiary.projectBorder};
-
-    @media ${props => props.theme.bp.mobileL} {
-      left: -2.6rem;
-    }
-  }
-
-  & h3 {
-    margin: 0.4rem 0 1.4rem 0;
-    font-weight: 500;
-    @media ${props => props.theme.bp.mobileL} {
-      font-size: 2rem;
-    }
-  }
-`;
-
-export const StyledExperiencePeriod = styled.span`
-  display: inline-block;
-  font-family: ${props => props.theme.fonts.primary};
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: 0.08rem;
-  color: ${props => props.theme.primary.h3};
-
-  @media ${props => props.theme.bp.mobileL} {
-    font-size: 1.3rem;
-  }
-`;
-
-export const StyledExperienceDescription = styled.div`
-  padding: 2.4rem 2.6rem;
-  border-radius: 0.4rem;
-  background-color: ${props => props.theme.primary.projectDescBg};
-  box-shadow: 0 0.3rem 0.9rem -0.4rem rgb(0 0 0 / 25%);
-  border-left: 0.3rem solid ${props => props.theme.tertiary.projectBorder};
-
-  & p {
-    font-size: 1.5rem;
-    font-weight: 500;
-    @media ${props => props.theme.bp.mobileL} {
-      font-size: 1.4rem;
-    }
-  }
-`;
-
-export const StyledExperienceTech = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 1rem;
-  margin-top: 1.6rem;
+  margin-bottom: 1.5rem;
 
-  & li {
-    padding: 0.7rem 1.3rem;
-    border-radius: 0.4rem;
-    background-color: ${props => props.theme.primary.skillLiBg};
-    color: ${props => props.theme.primary.skillLiText};
-    font-family: ${props => props.theme.fonts.primary};
-    font-weight: 600;
-    font-size: 1.3rem;
-    box-shadow: 0 0.2rem 0.3rem 0 rgb(0 0 0 / 12%);
+  h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.875rem;
+  }
 
-    @media ${props => props.theme.bp.mobileL} {
-      font-size: 1.2rem;
-      padding: 0.6rem 1.1rem;
+  @media ${({ theme }) => theme.bp.tablet} {
+    flex-direction: column;
+    gap: 0.75rem;
+
+    h3 {
+      font-size: 1.5rem;
     }
+  }
+`;
+
+export const StyledCompany = styled.p`
+  color: var(--primary);
+  font-weight: 600;
+`;
+
+export const StyledPeriod = styled.p`
+  color: var(--text-muted);
+  font-size: 0.875rem;
+`;
+
+export const StyledSummary = styled.p`
+  margin-bottom: 1.5rem;
+`;
+
+export const StyledMetrics = styled.dl`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  div {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--surface-muted);
+    text-align: center;
+  }
+
+  dd {
+    margin-bottom: 0.25rem;
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  dt {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+`;
+
+export const StyledHighlights = styled.ul`
+  margin-bottom: 1.5rem;
+
+  li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text);
+  }
+
+  li + li {
+    margin-top: 0.75rem;
+  }
+
+  li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 700;
   }
 `;

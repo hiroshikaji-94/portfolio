@@ -1,31 +1,27 @@
 import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { base, lightTheme, darkTheme } from './themes/themes';
-import About from './components/About/About';
-import Hero from './components/Hero/Hero';
 import GlobalStyles from './styles/Global/GlobalStyles';
+import Navigation from './components/Navigation/Navigation';
+import Hero from './components/Hero/Hero';
+import About from './components/About/About';
 import Skills from './components/Skills/Skills';
-import Sidebar from './components/Sidebar/Sidebar';
-import Showcase from './components/Showcase/Showcase';
-import ProjectGallery from './components/AdditionalProjects/ProjectGallery';
+import Projects from './components/Projects/Projects';
 import Experience from './components/Experience/Experience';
 import Posts from './components/Posts/Posts';
 import PostArticle from './components/Posts/PostArticle';
 import Recommendations from './components/Recommendations/Recommendations';
-import Navigation from './components/Navigation/Navigation';
-import { useGlobalContext } from './Context/Context';
+import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import { useGlobalContext } from './Context/Context';
 import { useHashRoute, matchPostSlug } from './hooks/useHashRoute';
 import { postData } from './data/postData';
 
 function App() {
   const { theme } = useGlobalContext();
-  const lightMode = { ...lightTheme };
-  const darkMode = { ...darkTheme };
-
   const currentTheme = {
     ...base,
-    ...(theme === 'light' ? lightMode : darkMode),
+    ...(theme === 'dark' ? darkTheme : lightTheme),
   };
 
   const route = useHashRoute();
@@ -33,26 +29,26 @@ function App() {
   const articleIndex = slug
     ? postData.findIndex(post => post.slug === slug)
     : -1;
+  const isArticle = articleIndex >= 0;
 
   // The section the browser wants to reach only exists after the main view
   // renders, so restore the scroll position ourselves when leaving an article.
   useEffect(() => {
-    if (articleIndex >= 0) {
-      window.scrollTo(0, 0);
+    if (isArticle) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       return;
     }
     const { hash } = window.location;
     if (hash && !hash.startsWith('#/')) {
       document.getElementById(hash.slice(1))?.scrollIntoView();
     }
-  }, [articleIndex]);
+  }, [isArticle, articleIndex]);
 
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
-      <Navigation />
-      <Sidebar />
-      {articleIndex >= 0 ? (
+      <Navigation onArticle={isArticle} />
+      {isArticle ? (
         <main>
           <PostArticle post={postData[articleIndex]} index={articleIndex} />
         </main>
@@ -61,11 +57,11 @@ function App() {
           <Hero />
           <About />
           <Skills />
-          <Showcase />
-          <ProjectGallery />
+          <Projects />
           <Experience />
           <Posts />
           <Recommendations />
+          <Contact />
         </main>
       )}
       <Footer />

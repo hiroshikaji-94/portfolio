@@ -1,77 +1,67 @@
-import NavMenu from '../Navigation/NavMenu';
-import { StyledFooter } from '../../styles/Footer/FooterLayout/StyledFooter';
-import { StyledFooterBackground } from '../../styles/Footer/FooterLayout/StyledFooterBackground';
-import { StyledFooterContent } from '../../styles/Footer/FooterContent/StyledFooterContent';
-import { StyledFooterNavContainer } from '../../styles/Footer/FooterContent/StyledFooterNavContainer';
-import {
-  StyledContactInfoContainer,
-  StyledContactInfo,
-} from '../../styles/Footer/FooterContent/StyledContactInfoContainer';
-import { StyledKoi1Container } from '../../styles/Footer/FooterSVGs/StyledKoi1Container';
-import { StyledKoi2Container } from '../../styles/Footer/FooterSVGs/StyledKoi2Container';
-import { StyledPlantContainer } from '../../styles/Footer/FooterSVGs/StyledPlantContainer';
-import { StyledSeaweedContainer } from '../../styles/Footer/FooterSVGs/StyledSeaweedContainer';
-import { StyledSeaweed2Container } from '../../styles/Footer/FooterSVGs/StyledSeawead2Container';
-import { StyledBoulderContainer } from '../../styles/Footer/FooterSVGs/StyledBoulderContainer';
-import FooterSVG from '/src/assets/images/illustrations/footer-background-silhouette-mountOG.svg';
-import Koi1SVG from '/src/assets/images/illustrations/koi1V2.svg';
-import Koi2SVG from '/src/assets/images/illustrations/koi2V2.svg';
-import BoulderSVG from '/src/assets/images/illustrations/boulderV2.svg';
-import SeaweedSVG from '/src/assets/images/illustrations/seaweed.svg';
-import Seaweed2SVG from '/src/assets/images/illustrations/seaweed2.svg';
-import PlantSVG from '/src/assets/images/illustrations/underwater-plantV2.svg';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n';
+import { FaEnvelope, FaGithub, FaLocationDot } from 'react-icons/fa6';
+import { Container } from '../../styles/UI/StyledUI';
+import {
+  StyledFooter,
+  StyledFooterTop,
+  StyledFooterLinks,
+  StyledFooterBottom,
+} from '../../styles/Footer/StyledFooter';
+import { contactData } from '../../data/contactData';
 
 const Footer = () => {
   const { t } = useTranslation();
-  const lang = i18n.resolvedLanguage;
+  const year = new Date().getFullYear();
+
+  const links = [
+    {
+      label: 'GitHub',
+      href: contactData.githubUrl,
+      Icon: FaGithub,
+      external: true,
+    },
+    {
+      label: t('contact.email'),
+      href: `mailto:${contactData.email}`,
+      Icon: FaEnvelope,
+    },
+    {
+      label: t('contact.location'),
+      href: contactData.mapsUrl,
+      Icon: FaLocationDot,
+      external: true,
+    },
+  ];
+
   return (
     <StyledFooter>
-      <StyledFooterBackground>
-        <div>
-          <FooterSVG />
-        </div>
-      </StyledFooterBackground>
-      <StyledFooterContent>
-        <StyledFooterNavContainer>
-          <NavMenu />
-          <StyledKoi1Container>
-            <Koi1SVG />
-          </StyledKoi1Container>
-        </StyledFooterNavContainer>
-        <StyledContactInfoContainer>
-          <StyledKoi2Container>
-            <Koi2SVG />
-          </StyledKoi2Container>
-          <StyledBoulderContainer lang={lang}>
-            <BoulderSVG />
-          </StyledBoulderContainer>
-          <StyledContactInfo lang={lang}>
-            <li> {t('footer-contact')}: hiroshi.kaji@miraitech.me</li>
-            <li>
-              {t('footer-location')}:{' '}
-              <a
-                href='https://www.google.com/maps/search/?api=1&query=Edogawa%202-32-31%2C%20Edogawa%2C%20Tokyo%20132-0013'
-                target='_blank'
-                rel='noreferrer noopener'
-              >
-                {t('footer-address')}
-              </a>
-            </li>
-            <li>{t('footer-message')}</li>
-          </StyledContactInfo>
-        </StyledContactInfoContainer>
-        <StyledPlantContainer>
-          <PlantSVG />
-        </StyledPlantContainer>
-        <StyledSeaweedContainer>
-          <SeaweedSVG />
-        </StyledSeaweedContainer>
-        <StyledSeaweed2Container>
-          <Seaweed2SVG />
-        </StyledSeaweed2Container>
-      </StyledFooterContent>
+      <Container>
+        <StyledFooterTop>
+          <div>
+            <h2>{t('footer.name')}</h2>
+            <p>{t('footer.tagline')}</p>
+          </div>
+          <StyledFooterLinks>
+            {links.map(({ label, href, Icon, external }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  aria-label={label}
+                  {...(external && {
+                    target: '_blank',
+                    rel: 'noreferrer noopener',
+                  })}
+                >
+                  <Icon aria-hidden='true' />
+                </a>
+              </li>
+            ))}
+          </StyledFooterLinks>
+        </StyledFooterTop>
+        <StyledFooterBottom>
+          <p>{t('footer.copyright', { year })}</p>
+        </StyledFooterBottom>
+      </Container>
     </StyledFooter>
   );
 };

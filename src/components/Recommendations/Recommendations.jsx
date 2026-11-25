@@ -1,41 +1,37 @@
 import { useReducedMotion } from 'framer-motion';
-import { recommendationData } from '../../data/recommendationData';
-import { StyledSectionHeading } from '../../styles/UI/StyledSectionHeading';
-import {
-  StyledRecommendationsSection,
-  StyledRecommendationsList,
-} from '../../styles/Recommendations/StyledRecommendations';
-import RecommendationCard from './RecommendationCard';
-import { parentRecommendationVariants } from '../../utils/animations';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n';
+import SectionHeader from '../UI/SectionHeader';
+import RecommendationCard from './RecommendationCard';
+import { Container, Section } from '../../styles/UI/StyledUI';
+import { StyledRecommendationGrid } from '../../styles/Recommendations/StyledRecommendations';
+import { recommendationData } from '../../data/recommendationData';
+import { revealProps, staggerChildren } from '../../utils/animations';
 
 const Recommendations = () => {
   const { t } = useTranslation();
-  const lang = i18n.resolvedLanguage;
   const shouldReduceMotion = useReducedMotion();
+
   return (
-    <StyledRecommendationsSection>
-      <StyledSectionHeading lang={lang}>
-        <h2 id='recommendations'> {t('recommendations-heading')}</h2>
-      </StyledSectionHeading>
-      <StyledRecommendationsList
-        initial={shouldReduceMotion ? 'noMotion' : 'hidden'}
-        whileInView='visible'
-        viewport={{ once: true, amount: 0.2 }}
-        variants={parentRecommendationVariants}
-      >
-        {recommendationData.map(recommendation => {
-          return (
+    <Section id='recommendations' aria-labelledby='recommendations-title'>
+      <Container>
+        <SectionHeader
+          id='recommendations-title'
+          title={t('recommendations-heading')}
+          subtitle={t('recommendations-section.subtitle')}
+        />
+        <StyledRecommendationGrid
+          {...revealProps(shouldReduceMotion, 0.1)}
+          variants={staggerChildren(0.12)}
+        >
+          {recommendationData.map(recommendation => (
             <RecommendationCard
               key={recommendation.id}
               recommendation={recommendation}
-              lang={lang}
             />
-          );
-        })}
-      </StyledRecommendationsList>
-    </StyledRecommendationsSection>
+          ))}
+        </StyledRecommendationGrid>
+      </Container>
+    </Section>
   );
 };
 

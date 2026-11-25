@@ -1,196 +1,136 @@
 import { createGlobalStyle } from 'styled-components';
-import GazeNozarashi from '../../fonts/GazeNozarashi/GazeNozarashi.ttf';
+
 const GlobalStyles = createGlobalStyle`
-
-/* Secondary Font */
-@font-face {
-  font-family: 'GazeNozarashi';
-  src: local('GazeNozarashi'), url(${GazeNozarashi}) format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-    *, *::after, *::before {
-        margin: 0;
-        padding: 0;
-        box-sizing: inherit;
-    }
-
-
-    html {
-        box-sizing: border-box;
-        font-size: 62.5%;
-        scroll-behavior: smooth;
-        /* color-scheme: dark light; */
-
-        @media ${props => props.theme.bp.desktopL} {
-        font-size: 58%
-        }
-
-        @media ${props => props.theme.bp.desktopM} {
-        font-size: 56.25%;
-        }
-
-        @media ${props => props.theme.bp.desktopXS} {
-        font-size: 50%;
-        }
-}
-
-    ::selection {
-    background-color: ${props => props.theme.tertiary.textSelection};
-    color: ${props => props.theme.neutrals.textSelectionColor};
-}
-
-/* Default focus styles & keyboard focus */
-    :focus {
-        outline: 0.2rem dashed ${props => props.theme.tertiary.focusOutline};
-        outline-offset: 0.3rem;
-     }
-
-     :focus:not(:focus-visible) {
-    outline: none;
-    outline-offset: 0rem;
+  :root {
+    --primary: ${({ theme }) => theme.primary};
+    --primary-dark: ${({ theme }) => theme.primaryDark};
+    --accent: ${({ theme }) => theme.accent};
+    --success: ${({ theme }) => theme.success};
+    --violet: ${({ theme }) => theme.violet};
+    --bg: ${({ theme }) => theme.bg};
+    --bg-alt: ${({ theme }) => theme.bgAlt};
+    --surface: ${({ theme }) => theme.surface};
+    --surface-on-alt: ${({ theme }) => theme.surfaceOnAlt};
+    --surface-muted: ${({ theme }) => theme.surfaceMuted};
+    --text: ${({ theme }) => theme.text};
+    --text-body: ${({ theme }) => theme.textBody};
+    --text-secondary: ${({ theme }) => theme.textSecondary};
+    --text-muted: ${({ theme }) => theme.textMuted};
+    --border: ${({ theme }) => theme.border};
+    --card-border: ${({ theme }) => theme.cardBorder};
+    --tag-bg: ${({ theme }) => theme.tagBg};
+    --shadow: ${({ theme }) => theme.shadow};
+    --shadow-hover: ${({ theme }) => theme.shadowHover};
+    --nav-bg: ${({ theme }) => theme.navBg};
+    --footer-bg: ${({ theme }) => theme.footerBg};
+    --code-bg: ${({ theme }) => theme.codeBg};
+    --font-sans: ${({ theme }) => theme.fonts.sans};
+    --font-mono: ${({ theme }) => theme.fonts.mono};
+    --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    --radius: 0.75rem;
+    --nav-height: 4rem;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Cards read this, and each Section sets it for its own background. */
+    --card-bg: var(--surface);
+    color-scheme: ${({ theme }) => theme.name};
   }
 
-    :focus-visible {
-    outline: .2rem dashed ${props => props.theme.tertiary.focusOutline};
-    outline-offset: .3rem;
-  }
-
-  /* Scrollbar styles */
-  /* TODO */
-  html {
-    /* Preserve scrollbar space after hiding it in ProjectGallery to prevent layout issue */
-    scrollbar-gutter: stable;
-    scrollbar-width: thin;
-    scrollbar-color: ${props => props.theme.primary.scrollbarTrack} ${props =>
-  props.theme.primary.scrollbarThumb};
-  }
-  ::-webkit-scrollbar {
-    width: 1.2rem;
-  }
-  ::-webkit-scrollbar-track {
-    background: ${props => props.theme.primary.scrollbarTrack};
-    background: transparent;
-}
-  ::-webkit-scrollbar-thumb {
-    background-color: ${props => props.theme.primary.scrollbarThumb};
-    background: linear-gradient(
-    to top,
-    ${props => props.theme.primary.scrollbarThumb},
-    ${props => props.theme.tertiary.scrollThumbHover}
-  );
-    border: .4rem solid transparent;
-    border-radius: 0.8rem;
-    /* background-clip: padding-box; */
-
-    &:hover {
-      background-color: ${({ theme }) => theme.scrollThumbHover};
-    }
-  }
-
-
-
-    body {
-      /* Use with 62.5% font size on html */
-        font-size: 1.6rem;
-        min-height: 100vh;
-        line-height: 1.6;
-        font-weight: 300; 
-        background-color: ${props => props.theme.primary.body};
-        
-        }
-
-    main {
-        background-color: ${props => props.theme.primary.main};
-        }
-
-    img, picture, svg, video {
-        display: block;
-        max-width: 100%;
-    }
-
-    button {
-        display: inline-block;
-        font-family: ${props => props.theme.fonts.primary};
-        color: ${props => props.theme.primary.link};
-        outline-color: transparent;
-        border: none;
-        text-decoration: none;
-        cursor: pointer;
-        text-transform: capitalize;
-        font-weight: 600;
-        line-height: 1;
-        font-size: 1.6rem;
-        border-radius: 0.4rem;
-        letter-spacing: 0.1rem;
-        &:hover {
-          color: ${props => props.theme.primary.linkHover};
-          transition: color 0.25s;
-    }
- 
-    }
-
-    h2 {
-      font-family: ${props => props.theme.fonts.secondary};
-      font-size: 5rem;
-      color: ${props => props.theme.primary.h2};
-
-      @media ${props => props.theme.bp.mobileL} {
-      font-size: 4rem;
-    }
-    }
-
-    h3 {
-      font-family: ${props => props.theme.fonts.primary};
-      font-size: 2.4rem;
-      font-weight: 300;
-      color: ${props => props.theme.primary.h3};
-    }
-
-    h4 {
-      font-family: ${props => props.theme.fonts.primary};
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: ${props => props.theme.primary.h4};
-    }
-
-    p {
-      font-weight: 600;
-    letter-spacing: 0.1rem;
-    font-size: 1.6rem;
-    line-height: 1.5;
-    font-family: ${props => props.theme.fonts.primary};
-    color: ${props => props.theme.primary.p};
-    }
-
-    li {
-      list-style-type: none;
-      color: ${props => props.theme.primary.li};
-    }
-
-    a:link, a:visited {
-      display: inline-block;
-      text-decoration: none;
-      color: ${props => props.theme.primary.link};
-      position: relative;
-      text-decoration-skip-ink: auto;
-    }
-
-    a:hover, a:active {
-      color: ${props => props.theme.primary.linkHover};
-      transition: color 0.25s;
-    }
-
-    @media screen and (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
-    /* Very short durations means JavaScript that relies on events still works */
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-}
+
+  html {
+    scroll-behavior: smooth;
+    /* Keeps anchored sections clear of the fixed navbar. */
+    scroll-padding-top: calc(var(--nav-height) + 1rem);
+    -webkit-text-size-adjust: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--text);
+    background-color: var(--bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  p {
+    color: var(--text-secondary);
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  a:hover {
+    color: var(--primary-dark);
+  }
+
+  img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  ul, ol {
+    list-style: none;
+  }
+
+  ::selection {
+    background-color: rgba(99, 102, 241, 0.25);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 0.25rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 `;
 
 export default GlobalStyles;

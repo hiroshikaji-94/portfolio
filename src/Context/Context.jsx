@@ -1,53 +1,57 @@
-import { useContext } from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { createContext } from 'react';
-import { CONSTANTS } from '../constants';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 
 const AppContext = createContext();
 
+// Only an explicit choice from the theme toggle is stored. Without one, the
+// site follows the operating system's light/dark setting.
+const THEME_KEY = 'theme-preference';
+
+const darkSchemeQuery = () =>
+  window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+const readSavedTheme = () => {
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    return saved === 'light' || saved === 'dark' ? saved : null;
+  } catch {
+    return null;
+  }
+};
+
 export const AppProvider = ({ children }) => {
-  const [showMoreProjects, setShowMoreProjects] = useState(false);
-  const [atBottom, setAtBottom] = useState(false);
-  const [theme, setUserTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('userTheme');
-    if (savedTheme) {
-      try {
-        const initialValue = JSON.parse(savedTheme);
-        return initialValue;
-      } catch (error) {
-        return '';
-      }
-    } else {
-      return '';
-    }
-  });
-  const toggleMoreProjects = () => {
-    setShowMoreProjects(!showMoreProjects);
-  };
   const { t } = useTranslation();
+  const [theme, setTheme] = useState(
+    () => readSavedTheme() ?? (darkSchemeQuery()?.matches ? 'dark' : 'light')
+  );
 
-  // For handling whether the user has scrolled to bottom of page - changes sidebar color
-  const handleScroll = () => {
-    const pageBottom =
-      Math.ceil(window.innerHeight + window.scrollY) >=
-      document.documentElement.scrollHeight -
-        CONSTANTS.SPACE_BEFORE_PAGE_BOTTOM;
-    if (pageBottom) {
-      setAtBottom(true);
-    } else {
-      setAtBottom(false);
-    }
-  };
-
+  // Follow OS theme changes until the visitor picks a theme themselves.
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, {
-      passive: true,
-    });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
+    const query = darkSchemeQuery();
+    if (!query) return undefined;
+    const handleChange = event => {
+      if (!readSavedTheme()) setTheme(event.matches ? 'dark' : 'light');
     };
+    query.addEventListener('change', handleChange);
+    return () => query.removeEventListener('change', handleChange);
+  }, []);
+
+  const toggleTheme = useCallback(() => {
+    setTheme(previous => {
+      const next = previous === 'dark' ? 'light' : 'dark';
+      try {
+        localStorage.setItem(THEME_KEY, next);
+      } catch {
+        // Storage can be unavailable (private mode); the toggle still works.
+      }
+      return next;
+    });
   }, []);
 
   // Changes the document title based on the language selected
@@ -55,51 +59,11 @@ export const AppProvider = ({ children }) => {
     document.title = t('app-title');
   }, [t]);
 
-  // Light/Dark theme toggler
-  const toggleTheme = () => {
-    theme === 'dark'
-      ? setUserTheme(prevTheme => (prevTheme = 'light'))
-      : setUserTheme(prevTheme => (prevTheme = 'dark'));
-  };
-
-  // Sets theme upon loading the page
-  useEffect(() => {
-    localStorage.setItem('userTheme', JSON.stringify(theme));
-  }, [theme]);
-
-  // Check user preference for dark mode
-  useEffect(() => {
-    const prefersDarkMode = window.matchMedia(
-      '(prefers-color-scheme: dark)'
-    ).matches;
-    if (prefersDarkMode) {
-      setUserTheme('dark');
-    }
-  }, []);
-  useEffect(() => {
-    const prefersLightMode = window.matchMedia(
-      '(prefers-color-scheme: light)'
-    ).matches;
-    if (prefersLightMode) {
-      setUserTheme('light');
-    }
-  }, []);
-
   return (
-    <AppContext.Provider
-      value={{
-        showMoreProjects,
-        toggleMoreProjects,
-        atBottom,
-        toggleTheme,
-        theme,
-      }}
-    >
+    <AppContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </AppContext.Provider>
   );
 };
 
-export const useGlobalContext = () => {
-  return useContext(AppContext);
-};
+export const useGlobalContext = () => useContext(AppContext);

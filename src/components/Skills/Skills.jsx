@@ -1,40 +1,49 @@
-import { skillData } from '../../data/skillData';
-import { StyledSectionHeading } from '../../styles/UI/StyledSectionHeading';
-import {
-  StyledSkillsSection,
-  StyledSkillsContainer,
-} from '../../styles/Skills/SkillsLayout/StyledSkillsSection';
-import { StyledSkillsList } from '../../styles/Skills/Skill/StyledSkillsList';
-import { parentTechnologyVariants } from '../../utils/animations';
-import Skill from './Skill';
 import { useReducedMotion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n';
-import { useGlobalContext } from '../../Context/Context';
+import SectionHeader from '../UI/SectionHeader';
+import { Container, Section } from '../../styles/UI/StyledUI';
+import {
+  StyledSkillGroup,
+  StyledSkillGrid,
+  StyledSkillCard,
+  StyledSkillEmoji,
+} from '../../styles/Skills/StyledSkills';
+import { skillGroups } from '../../data/skillData';
+import { fadeUp, revealProps, staggerChildren } from '../../utils/animations';
 
 const Skills = () => {
   const { t } = useTranslation();
-  const lang = i18n.resolvedLanguage;
-  const { theme } = useGlobalContext();
   const shouldReduceMotion = useReducedMotion();
+
   return (
-    <StyledSkillsSection pageTheme={theme}>
-      <StyledSectionHeading lang={lang}>
-        <h2 id='technology'> {t('technology-heading')}</h2>
-      </StyledSectionHeading>
-      <StyledSkillsContainer>
-        <StyledSkillsList
-          initial={shouldReduceMotion ? 'noMotion' : 'hidden'}
-          whileInView='visible'
-          viewport={{ once: true }}
-          variants={parentTechnologyVariants}
-        >
-          {skillData.map(skill => {
-            return <Skill key={skill.id} skill={skill} />;
-          })}
-        </StyledSkillsList>
-      </StyledSkillsContainer>
-    </StyledSkillsSection>
+    <Section id='technology' aria-labelledby='technology-title'>
+      <Container>
+        <SectionHeader
+          id='technology-title'
+          title={t('technology-heading')}
+          subtitle={t('skills.subtitle')}
+        />
+        {skillGroups.map(group => (
+          <StyledSkillGroup key={group.id}>
+            <h3>{t(`skills.groups.${group.id}.title`)}</h3>
+            <StyledSkillGrid
+              {...revealProps(shouldReduceMotion, 0.1)}
+              variants={staggerChildren()}
+            >
+              {group.items.map(item => (
+                <StyledSkillCard key={item.id} variants={fadeUp}>
+                  <StyledSkillEmoji aria-hidden='true'>
+                    {item.emoji}
+                  </StyledSkillEmoji>
+                  <h4>{t(`skills.groups.${group.id}.items.${item.id}`)}</h4>
+                  <p>{item.tools.join(', ')}</p>
+                </StyledSkillCard>
+              ))}
+            </StyledSkillGrid>
+          </StyledSkillGroup>
+        ))}
+      </Container>
+    </Section>
   );
 };
 

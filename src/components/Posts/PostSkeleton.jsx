@@ -2,32 +2,37 @@ import {
   StyledPostSkeleton,
   StyledSkeletonBlock,
   StyledSkeletonImage,
-  StyledSkeletonTags,
+  StyledSkeletonBody,
+  StyledSkeletonRow,
 } from '../../styles/Posts/StyledPosts';
-import { picturesTextVariants } from '../../utils/animations';
+import { fadeUp } from '../../utils/animations';
 
 // Placeholder for an unwritten post. It carries no content, so it is hidden
 // from assistive tech rather than announced as an empty article.
-const PostSkeleton = ({ shouldReduceMotion }) => {
+const PostSkeleton = () => {
   return (
-    <StyledPostSkeleton
-      aria-hidden='true'
-      initial={shouldReduceMotion ? 'noMotion' : 'hidden'}
-      whileInView='visible'
-      viewport={{ once: true, amount: 0.3 }}
-      variants={picturesTextVariants}
-    >
+    <StyledPostSkeleton aria-hidden='true' variants={fadeUp}>
       <StyledSkeletonImage />
-      <StyledSkeletonBlock $width='45%' $height='1.3rem' />
-      <StyledSkeletonBlock $width='90%' $height='2.1rem' />
-      <StyledSkeletonBlock $width='65%' $height='2.1rem' />
-      <StyledSkeletonBlock $width='100%' />
-      <StyledSkeletonBlock $width='100%' />
-      <StyledSkeletonBlock $width='80%' />
-      <StyledSkeletonTags>
-        <StyledSkeletonBlock $width='8rem' $height='2.9rem' />
-        <StyledSkeletonBlock $width='11rem' $height='2.9rem' />
-      </StyledSkeletonTags>
+      <StyledSkeletonBody>
+        <StyledSkeletonRow style={{ marginTop: 0 }}>
+          <StyledSkeletonBlock $width='6.5rem' $height='1.4rem' $round />
+          <StyledSkeletonBlock $width='5rem' $height='1.4rem' $round />
+        </StyledSkeletonRow>
+        <StyledSkeletonBlock
+          $width='85%'
+          $height='1.5rem'
+          style={{ marginTop: '1.25rem' }}
+        />
+        <StyledSkeletonBlock $width='60%' $height='1.5rem' />
+        <StyledSkeletonBlock style={{ marginTop: '1.25rem' }} />
+        <StyledSkeletonBlock />
+        <StyledSkeletonBlock $width='75%' />
+        <StyledSkeletonRow>
+          <StyledSkeletonBlock $width='4.5rem' $height='1.4rem' $round />
+          <StyledSkeletonBlock $width='6rem' $height='1.4rem' $round />
+          <StyledSkeletonBlock $width='5rem' $height='1.4rem' $round />
+        </StyledSkeletonRow>
+      </StyledSkeletonBody>
     </StyledPostSkeleton>
   );
 };
