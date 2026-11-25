@@ -66,7 +66,7 @@ const Navigation = ({ onArticle }) => {
           aria-label={t('nav.home-label')}
           onClick={closeMenu}
         >
-          HK
+          <img src='/logo.svg' alt='' width='40' height='40' />
         </StyledBrand>
         <StyledNavLinks id='primary-navigation' $open={isOpen}>
           {navLinks.map(link => {

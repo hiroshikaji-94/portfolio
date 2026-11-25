@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- Ensō: an open Zen brush circle around an amber point of focus. -->
+  <defs>
+    <linearGradient id="g" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#818cf8" />
+      <stop offset="1" stop-color="#8b5cf6" />
+    </linearGradient>
+    <!-- Cuts the opening in the upper right of the ring. -->
+    <mask id="m">
+      <rect width="48" height="48" fill="#fff" />
+      <path d="M24 24 40 1 47 9Z" fill="#000" />
+    </mask>
+  </defs>
+  <!-- The inner circle sits off-centre, so the ring thickens like a brush stroke. -->
+  <path d="M24 5a19 19 0 1 0 0 38a19 19 0 1 0 0-38Z M26 8.5a13.5 13.5 0 1 0 0 27a13.5 13.5 0 1 0 0-27Z" fill="url(#g)" fill-rule="evenodd" mask="url(#m)" />
+  <circle cx="26" cy="22" r="4" fill="#f59e0b" />
+</svg>

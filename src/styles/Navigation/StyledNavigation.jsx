@@ -34,15 +34,15 @@ export const StyledBrand = styled.a`
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 0.5rem;
-  background: var(--gradient);
-  color: #ffffff;
-  font-size: 1.125rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
 
-  &:hover {
-    color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.35);
+  img {
+    width: 100%;
+    height: 100%;
+    transition: filter 0.2s ease;
+  }
+
+  &:hover img {
+    filter: drop-shadow(0 0 6px rgba(129, 140, 248, 0.6));
   }
 `;
 
