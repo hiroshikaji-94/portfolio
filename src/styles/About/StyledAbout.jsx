@@ -173,8 +173,9 @@ export const StyledAvatar = styled.div`
   img {
     width: 100%;
     height: 100%;
+    /* The avatar file is a square crop around the face, so centre it. */
     object-fit: cover;
-    object-position: 50% 18%;
+    object-position: center;
   }
 `;
 

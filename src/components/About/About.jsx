@@ -101,10 +101,10 @@ const About = () => {
             >
               <StyledAvatar>
                 <img
-                  src='/rasters/hiroshi.webp'
+                  src='/rasters/hiroshi-kaji-avatar.webp'
                   alt={t('about.photo-alt')}
-                  width='900'
-                  height='1205'
+                  width='480'
+                  height='480'
                   loading='lazy'
                 />
               </StyledAvatar>
